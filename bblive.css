@@ -1,0 +1,1941 @@
+/* CSS from CBS.com page */
+
+#bbl {
+    line-height: 1
+}
+#bbl .clearfix {
+    display: block
+}
+#bbl a,
+#bbl b,
+#bbl div,
+#bbl em,
+#bbl embed,
+#bbl h1,
+#bbl h2,
+#bbl h3,
+#bbl h4,
+#bbl h5,
+#bbl h6,
+#bbl i,
+#bbl iframe,
+#bbl img,
+#bbl li,
+#bbl object,
+#bbl p,
+#bbl span,
+#bbl strong,
+#bbl table,
+#bbl td,
+#bbl th,
+#bbl tr,
+#bbl ul,
+#bbl video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+#bbl a {
+    color: #111;
+    outline: none
+}
+#bbl ol,
+#bbl ul {
+    list-style: none
+}
+#bbl table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+#bbl {
+    padding: 0;
+    margin: 0 auto;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1em;
+    background: #666
+}
+#bbl .bbl-clear {
+    clear: both;
+    width: 0;
+    height: 0;
+    overflow: hidden
+}
+#bbl-loading {
+    width: 980px;
+    height: 681px;
+    padding: 0 0 19px;
+    background: #333 url(../graphics/loading.gif) no-repeat 50%;
+    margin: 0 auto 50px;
+    line-height: 630px;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .4)
+}
+#bbl-live-air-notice,
+#bbl-loading {
+    color: #777;
+    font-family: arial, helvetica, sans-serif;
+    text-align: center
+}
+#bbl-live-air-notice {
+    font-size: 16px;
+    font-style: italic;
+    margin: 5px auto 20px
+}
+#bbl #early-bird-flag {
+    background: #f38c25;
+    width: 571px;
+    height: 0;
+    top: 19px;
+    left: 19px;
+    overflow: hidden;
+    z-index: 10000;
+    height: 30px;
+    display: block;
+    padding: 6px 10px;
+    line-height: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    border: 1px solid #dd7f22;
+    background: #f2a252;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #f2a252), color-stop(100%, #f27426));
+    background: -webkit-linear-gradient(top, #f2a252 50%, #f27426);
+    background: linear-gradient(180deg, #f2a252 50%, #f27426);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .4)
+}
+#bbl #early-bird-flag,
+#bbl #error_msg {
+    position: absolute;
+    color: #fff;
+    text-align: center
+}
+#bbl #error_msg {
+    width: 98%;
+    padding: 1%;
+    background: #111;
+    display: none;
+    z-index: 1000;
+    height: 98%;
+    line-height: 1.3em
+}
+#bbl #error_msg a {
+    color: #eee;
+    text-decoration: underline
+}
+#bbl #error_msg a:hover {
+    text-decoration: none
+}
+#bbl #error_msg .flashRequirement {
+    width: 582px
+}
+#debug_bbtime {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    background: #111;
+    font-family: arial;
+    font-size: 11px;
+    padding: 5px;
+    z-index: 500
+}
+#xdebug_bbtime:hover {
+    opacity: .5;
+    filter: alpha(opacity=50)
+}
+#bbl #loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    padding: 10px
+}
+#bbl #bbl-promo {
+    position: absolute;
+    top: 511px;
+    background: #333;
+    left: 18px;
+    width: 596px;
+    height: 86px;
+    text-align: center;
+    overflow: hidden
+}
+#bbl #bbl-display-date {
+    position: absolute;
+    bottom: -30px;
+    left: 15px;
+    color: #eee;
+    font-weight: 700;
+    font-size: 14px
+}
+#bbl {
+    width: 980px
+}
+#bbl #bbl-container {
+    width: 100%;
+    height: 611px;
+    position: relative;
+    margin: 0 auto;
+    text-align: left
+}
+#bbl #cbsi-player-embed {
+    width: 596px;
+    height: 378px;
+    background: #000;
+    position: absolute;
+    top: 118px;
+    left: 18px;
+    z-index: 5
+}
+#bbl #cbsi-aa-player {
+    position: relative;
+    overflow: hidden;
+    height: 378px;
+    width: 100%
+}
+#bbl #cbsi_player {
+    width: 596px;
+    height: 342px
+}
+#bbl .uvp-fullscreen #cbsi_player {
+    width: 100%;
+    height: 100%
+}
+#bbl .uvp-fullscreen #cbsi-aa-player {
+    height: 100%!important
+}
+#bbl .uvp-fullscreen #cbsi_player {
+    height: 100%;
+    width: 100%
+}
+#bbl #rewind1min {
+    right: 90px;
+    width: 38px;
+    background: url(../graphics/bigbrother-14-back1min.png) no-repeat 50%
+}
+#bbl #golive,
+#bbl #rewind1min {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    height: 38px;
+    overflow: hidden;
+    text-indent: -9999px
+}
+#bbl #golive {
+    right: 10px;
+    width: 64px;
+    background: url(../graphics/bigbrother-14-golive.png) no-repeat 50%
+}
+#bbl #video_content {
+    overflow: auto
+}
+#bbl #bbl-camera-list {
+    position: absolute;
+    top: 17px;
+    left: 18px;
+    width: 596px;
+    height: 88px;
+    z-index: 1;
+    -webkit-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out
+}
+#bbl #bbl-camera-list *,
+#bbl #bbl-camera-list:after,
+#bbl #bbl-camera-list:before {
+    box-sizing: border-box
+}
+#bbl #bbl-camera-angles {
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 596px;
+    height: 98px
+}
+#bbl #bbl-camera-angles li {
+    position: relative;
+    float: left;
+    width: 120px;
+    height: 98px;
+    margin: 0
+}
+#bbl #bbl-camera-angles li #livecam1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    z-index: 1
+}
+#bbl #bbl-camera-angles li #strip-bg {
+    width: 480px;
+    height: 68px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #404040
+}
+#bbl #bbl-camera-angles li:last-child {
+    width: 116px
+}
+#bbl #bbl-camera-angles li>div {
+    position: absolute;
+    bottom: 0;
+    left: 0
+}
+#bbl #bbl-camera-angles li.selected a span {
+    background: #404040
+}
+#bbl #bbl-camera-angles li.selected a:hover span {
+    color: #fff
+}
+#bbl #bbl-camera-angles li.selected a:hover .camera-border {
+    background: none
+}
+#bbl #bbl-camera-angles li.selected .camera-border {
+    z-index: 120;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 117px;
+    height: 98px
+}
+#bbl #bbl-camera-angles li .liveimg {
+    width: 100%;
+    height: 68px
+}
+#bbl #bbl-camera-angles li a {
+    display: block;
+    margin: 0;
+    width: auto;
+    width: 100%;
+    height: 98px;
+    text-align: center;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+    background: url(../graphics/bigbrother-camera-cover.gif);
+    overflow: hidden
+}
+#bbl #bbl-camera-angles li a span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 11px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    z-index: 109
+}
+#bbl #bbl-camera-angles li a:hover {
+    text-decoration: none;
+    z-index: 110;
+    position: absolute
+}
+#bbl #bbl-camera-angles li a:hover .camera-border {
+    z-index: 110;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 98px;
+    background: hsla(0, 0%, 100%, .1)
+}
+#bbl #bbl-camera-angles li a:hover span {
+    color: #aaa
+}
+#bbl #bbl-camera-angles li a.camera-first {
+    margin: 0
+}
+#bbl #end-casting,
+#bbl #start-casting {
+    display: none;
+    position: absolute;
+    bottom: 5px;
+    right: 196px;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    text-indent: -9999px;
+    cursor: pointer;
+    background-image: url(../graphics/bigbrother-16-icons.png);
+    background-repeat: no-repeat
+}
+#bbl #end-casting:hover,
+#bbl #start-casting:hover {
+    opacity: .7
+}
+#bbl #start-casting {
+    background-position: -210px -66px
+}
+#bbl #end-casting {
+    background-position: -258px -66px
+}
+body.bbl-cast-available #bbl #start-casting,
+body.bbl-casting #bbl #end-casting {
+    display: block
+}
+body.bbl-not-live #bbl #start-casting {
+    display: none
+}
+body.bbl-wait #bbl #bbl-camera-angles li a {
+    cursor: default
+}
+body.bbl-wait #bbl #bbl-camera-list {
+    opacity: .3
+}
+body.bbl-hi5 #bbl #bbl-camera-angles li #livecam1 {
+    background: none
+}
+body.bbl-hi5 #bbl #cbsi_player {
+    height: 342px
+}
+body.bbl-hi5 #bbl #cbsi-aa-player {
+    height: 340px
+}
+body.bbl-hi5 #bbl #cbsi-player-embed {
+    height: 338px
+}
+#bbl #bbl-alerts {
+    width: 100%;
+    height: 0;
+    line-height: 26px;
+    color: #fff;
+    font-size: 12px;
+    font-style: italic;
+    position: relative;
+    font-family: arial, helvetica, sans-serif;
+    overflow: hidden
+}
+#bbl #bbl-alerts .alert-shadow-left,
+#bbl #bbl-alerts .alert-shadow-right {
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    height: 26px;
+    width: 50px
+}
+#bbl #bbl-alerts .alert-shadow-left {
+    left: 0;
+    background: url(../graphics/bigbrother-14-alerts-shadow.png) repeat-y 0 0
+}
+#bbl #bbl-alerts .alert-shadow-right {
+    right: 0;
+    background: url(../graphics/bigbrother-14-alerts-shadow-right.png) repeat-y 100% 0
+}
+#bbl #bbl-alerts a {
+    color: #ccc
+}
+#bbl #bbl-alerts a:hover {
+    color: #999
+}
+#bbl #bbl-alert-text {
+    height: 26px;
+    line-height: 26px;
+    z-index: 3
+}
+#bbl #bbl-alert-text ul {
+    position: relative;
+    left: 750px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+#bbl #bbl-alert-text ul li {
+    float: left;
+    margin: 0;
+    padding: 0
+}
+#bbl .tickercontainer {
+    width: 100%;
+    height: 26px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden
+}
+#bbl .tickercontainer .mask {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden
+}
+#bbl #bbl-tabs {
+    position: absolute;
+    top: 17px;
+    right: 18px;
+    width: 330px
+}
+#bbl #bbl-tabs-control {
+    width: 330px;
+    height: 30px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: none
+}
+#bbl #bbl-tabs-control li {
+    float: left;
+    height: 30px
+}
+#bbl #bbl-tabs-control li#bbl-tab-chat {
+    width: 20%
+}
+#bbl #bbl-tabs-control li#bbl-tab-flashbacks,
+#bbl #bbl-tabs-control li#bbl-tab-highlights {
+    width: 30%
+}
+#bbl #bbl-tabs-control li#bbl-tab-tweets {
+    width: 20%
+}
+#bbl #bbl-tabs-control li a {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 11px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none
+}
+#bbl #bbl-tabs-control li a:hover {
+    color: #ccc;
+    background: hsla(0, 0%, 100%, .1);
+    text-decoration: none
+}
+#bbl #bbl-tabs-control li.activeTab a {
+    color: #fff;
+    background: #404040
+}
+#bbl #bbl-tabs-control li.disabled a {
+    color: #999;
+    cursor: default!important
+}
+#bbl #bbl-tabs-control li.disabled a:hover {
+    background: none;
+    text-decoration: none
+}
+#bbl .bbl-tab {
+    width: 330px;
+    height: 550px;
+    background: #404040
+}
+#bbl #bbl-chat,
+#bbl #bbl-flashbacks,
+#bbl #bbl-highlights,
+#bbl #bbl-houseguests {
+    display: none
+}
+#bbl #bbl-tweets {
+    overflow: hidden;
+    display: none
+}
+#bbl #bbl-flashbacks {
+    background: #404040!important
+}
+#bbl .tab-header {
+    width: 330px;
+    height: 60px;
+    padding: 0;
+    z-index: 20px;
+    position: relative;
+    z-index: 1;
+    border-bottom: 3px solid #666
+}
+#bbl #bbl-tweets .tab-header {
+    padding-top: 15px;
+    height: 52px
+}
+#bbl #bbl-tweets .tab-header a img {
+    width: 25px;
+    display: inline;
+    position: relative;
+    top: 6px
+}
+#bbl .bbl-tab-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 330px;
+    height: 480px;
+    z-index: 1;
+    background: #fff
+}
+#bbl #bbl-chat {
+    background: #fff url(../graphics/bigbrother-16-chat-bg.png) repeat-x 0 0
+}
+#bbl #bbl-chat-wrapper {
+    width: 310px;
+    height: 525px;
+    position: relative;
+    left: 10px
+}
+#bbl .bx-wrapper {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    *zoom: 1;
+    max-width: 594px!important
+}
+#bbl .bx-wrapper .bx-loading {
+    min-height: 50px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2000
+}
+#bbl .bx-wrapper .bx-controls-direction a {
+    position: absolute;
+    top: 0;
+    outline: 0;
+    width: 40px;
+    height: 30px;
+    text-indent: -9999px;
+    z-index: 9999
+}
+#bbl .bx-wrapper .bx-next,
+#bbl .bx-wrapper .bx-next span,
+#bbl .bx-wrapper .bx-prev,
+#bbl .bx-wrapper .bx-prev span {
+    background-image: url(../graphics/bigbrother-16-icons.png);
+    background-repeat: no-repeat
+}
+#bbl .bx-wrapper .bx-next span,
+#bbl .bx-wrapper .bx-prev span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+#bbl .bx-wrapper .bx-next:hover span,
+#bbl .bx-wrapper .bx-prev:hover span {
+    opacity: .6
+}
+#bbl .bx-wrapper .bx-next:active span,
+#bbl .bx-wrapper .bx-prev:active span {
+    opacity: .9
+}
+#bbl .bx-wrapper .bx-prev {
+    left: -1px;
+    background-position: 0 100%
+}
+#bbl .bx-wrapper .bx-prev span {
+    background-position: -212px -24px
+}
+#bbl .bx-wrapper .bx-next {
+    right: -1px;
+    background-position: 100% 100%
+}
+#bbl .bx-wrapper .bx-next span {
+    background-position: -242px -24px
+}
+#bbl .bx-wrapper .bx-controls-direction a.disabled {
+    display: none
+}
+#bbl .bx-wrapper li {
+    padding: 0;
+    margin: 0 4px 0 0
+}
+#bbl .bx-wrapper li a {
+    display: block;
+    height: 98px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: none
+}
+#bbl .bx-wrapper li a img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 120px;
+    height: 68px;
+    z-index: 9
+}
+#bbl .bx-wrapper li a span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    font-size: 9px;
+    color: #fff;
+    width: 100%;
+    line-height: 10px;
+    height: 30px;
+    padding: 4px 0 0 5px;
+    text-align: left;
+    overflow: hidden;
+    text-transform: uppercase
+}
+#bbl .bx-wrapper li a:hover {
+    background: hsla(0, 0%, 100%, .1)
+}
+#bbl .bx-wrapper li a:hover img {
+    opacity: .9
+}
+#bbl .bx-wrapper li a:hover span {
+    color: hsla(0, 0%, 100%, .9)
+}
+#bbl .bx-wrapper li a:hover i {
+    opacity: .8
+}
+#bbl .bx-wrapper li.unavailable {
+    opacity: .2
+}
+#bbl .bx-wrapper li.active-eb-video a span {
+    background: #404040
+}
+#bbl #eosmessage {
+    background: url(../graphics/end_of_season_slate.jpg) no-repeat top;
+    width: 596px;
+    height: 378px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    text-indent: -9999px
+}
+#bbl #eosmessage.tablet {
+    background: url(../graphics/end_of_season_slate.jpg) no-repeat 50%
+}
+#bbl #eosselect {
+    background: url(../graphics/archivedbanner1.jpg) no-repeat 50%;
+    width: 598px;
+    height: 90px;
+    position: absolute;
+    top: 0;
+    left: -2px;
+    text-indent: -9999px;
+    z-index: 100
+}
+#bbl #bbl-calendar-button {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 451px;
+    z-index: 400;
+    width: 15px;
+    height: 16px;
+    background: url(../graphics/bigbrother-13-calendar-icon.png) no-repeat 0 0;
+    overflow: hidden;
+    cursor: pointer;
+    text-indent: -9999px
+}
+#bbl #bbl-calendar-button:hover {
+    opacity: .5!important
+}
+body.bbl-wait #bbl #bbl-calendar-button {
+    opacity: .5;
+    cursor: default
+}
+#bbl-flashbacks .flashback-controller {
+    background: #fff;
+    height: 200px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute
+}
+#bbl-flashbacks .calendar {
+    padding: 0
+}
+#bbl-flashbacks .calendar .month {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    height: 67px;
+    line-height: 67px;
+    font-size: 14px;
+    color: #fff;
+    border-bottom: 3px solid #666
+}
+#bbl-flashbacks .calendar .month .month-drop {
+    position: absolute;
+    border-radius: 7px;
+    width: 150px;
+    display: block;
+    padding: 5px 10px;
+    height: 20px;
+    left: 50%;
+    margin-left: -75px;
+    top: 20px;
+    line-height: 1em;
+    border: 1px solid transparent;
+    border-bottom: 1px solid transparent
+}
+#bbl-flashbacks .calendar .month .month-drop a {
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    text-align: center
+}
+#bbl-flashbacks .calendar .month .month-drop .month-dropdown {
+    display: none
+}
+#bbl-flashbacks .calendar .month .month-drop:hover {
+    height: 20px;
+    border: 1px solid #666;
+    border-radius: 7px 7px 0 0;
+    border-bottom: 1px solid transparent;
+    background: #666;
+    color: #0092f3
+}
+#bbl-flashbacks .calendar .month .month-drop:hover .month-dropdown {
+    display: block;
+    position: absolute;
+    top: 25px;
+    left: -1px;
+    right: -1px;
+    background: #666;
+    z-index: 10;
+    border-radius: 0 0 7px 7px;
+    border: 1px solid #666;
+    border-top: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    line-height: 1em;
+    overflow: hidden
+}
+#bbl-flashbacks .calendar .month .month-drop:hover .month-dropdown li {
+    margin: 0;
+    border-top: 1px solid gray
+}
+#bbl-flashbacks .calendar .month .month-drop:hover .month-dropdown li a {
+    display: block;
+    padding: 7px;
+    color: #fff;
+    font-size: 11px;
+    text-transform: uppercase
+}
+#bbl-flashbacks .calendar .month .month-drop:hover .month-dropdown li a:hover {
+    background: #0092f3;
+    color: #fff
+}
+#bbl-flashbacks .calendar .month .calendar-down-arrow {
+    display: inline-block;
+    position: relative;
+    text-indent: -9999px;
+    overflow: hidden;
+    top: -2px;
+    width: 20px;
+    height: 13px;
+    background-image: url(../graphics/bigbrother-16-icons.png);
+    background-position: -304px -31px
+}
+#bbl-flashbacks .calendar .month .calendar-month {
+    position: absolute;
+    top: 0;
+    height: 42px;
+    text-align: center;
+    line-height: 42px;
+    display: block;
+    cursor: pointer;
+    width: 30px
+}
+#bbl-flashbacks .calendar .month .calendar-month span {
+    position: absolute;
+    top: 25px;
+    display: block;
+    text-indent: -9999px;
+    overflow: hidden;
+    height: 20px;
+    width: 20px;
+    background-image: url(../graphics/bigbrother-16-icons.png)
+}
+#bbl-flashbacks .calendar .month .calendar-month:hover {
+    opacity: .6
+}
+#bbl-flashbacks .calendar .month .calendar-month:active {
+    opacity: .8
+}
+#bbl-flashbacks .calendar .month .calendar-month.prev-month {
+    left: 0
+}
+#bbl-flashbacks .calendar .month .calendar-month.prev-month span {
+    left: 8px;
+    background-position: -21px -33px
+}
+#bbl-flashbacks .calendar .month .calendar-month.next-month {
+    right: 0
+}
+#bbl-flashbacks .calendar .month .calendar-month.next-month span {
+    right: 8px;
+    background-position: -66px -33px
+}
+#bbl-flashbacks .calendar .calendar-view {
+    background: #fff;
+    padding: 10px;
+    height: 300px
+}
+#bbl-flashbacks .calendar .calendar-row {
+    width: 100%;
+    clear: left;
+    padding-left: 7px
+}
+#bbl-flashbacks .calendar .calendar-row .dow-head {
+    height: 20px;
+    font-size: 10px
+}
+#bbl-flashbacks .calendar .calendar-row .dow,
+#bbl-flashbacks .calendar .calendar-row .dow-head {
+    width: 42px;
+    display: block;
+    float: left;
+    text-transform: uppercase;
+    text-align: center;
+    color: #999;
+    margin: -1px 0 0 -1px
+}
+#bbl-flashbacks .calendar .calendar-row .dow {
+    font-size: 13px;
+    height: 39px;
+    line-height: 39px;
+    position: relative
+}
+#bbl-flashbacks .calendar .calendar-row .dow a {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    border: 1px solid #ccc
+}
+#bbl-flashbacks .calendar .calendar-row .dow a:hover {
+    background: #f5f5f5
+}
+#bbl-flashbacks .calendar .calendar-row .dow a div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 40px
+}
+#bbl-flashbacks .calendar .calendar-row .dow a .not-selectable {
+    color: #ddd
+}
+#bbl-flashbacks .calendar .calendar-row .dow a .active {
+    background: #0092f3;
+    color: #fff
+}
+#bbl-flashbacks .timepicker {
+    background: #fff;
+    margin: 0 5px;
+    padding: 0 0 0 17px;
+    position: absolute;
+    left: 0;
+    width: 180px
+}
+#bbl-flashbacks .timepicker .timepicker-note {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #666;
+    text-align: center
+}
+#bbl-flashbacks .timepicker .time {
+    position: relative;
+    height: 80px;
+    margin-top: 15px
+}
+#bbl-flashbacks .timepicker .time div {
+    font-size: 30px;
+    height: 70px;
+    display: inline-block;
+    position: relative
+}
+#bbl-flashbacks .timepicker .time div .bottom {
+    width: 100%;
+    height: 70px;
+    display: block;
+    font-size: 50px;
+    line-height: 70px;
+    font-weight: 700;
+    letter-spacing: -1px
+}
+#bbl-flashbacks .timepicker .time div .tiny {
+    display: block;
+    font-weight: 400;
+    font-size: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    line-height: 20px;
+    top: 44px
+}
+#bbl-flashbacks .timepicker .time .time-zone {
+    width: 20px
+}
+#bbl-flashbacks .timepicker .time .time-colon {
+    width: 13px;
+    text-align: center
+}
+#bbl-flashbacks .timepicker .time .time-hour {
+    width: 54px;
+    text-align: right
+}
+#bbl-flashbacks .timepicker .time .time-hour .arrow-down,
+#bbl-flashbacks .timepicker .time .time-hour .arrow-up {
+    left: 21px
+}
+#bbl-flashbacks .timepicker .time .time-min {
+    width: 54px;
+    text-align: left
+}
+#bbl-flashbacks .timepicker .time .time-min .arrow-down,
+#bbl-flashbacks .timepicker .time .time-min .arrow-up {
+    left: 16px
+}
+#bbl-flashbacks .timepicker .time .time-ampm {
+    width: 15px
+}
+#bbl-flashbacks .timepicker .time .arrow-down,
+#bbl-flashbacks .timepicker .time .arrow-up {
+    display: block;
+    width: 20px;
+    height: 20px;
+    text-align: left;
+    cursor: pointer;
+    position: absolute
+}
+#bbl-flashbacks .timepicker .time .arrow-down span,
+#bbl-flashbacks .timepicker .time .arrow-up span {
+    overflow: hidden;
+    display: block;
+    text-indent: -9999px;
+    height: 20px;
+    width: 20px;
+    background-image: url(../graphics/bigbrother-16-icons.png)
+}
+#bbl-flashbacks .timepicker .time .arrow-down:hover,
+#bbl-flashbacks .timepicker .time .arrow-up:hover {
+    opacity: .5
+}
+#bbl-flashbacks .timepicker .time .arrow-down:active,
+#bbl-flashbacks .timepicker .time .arrow-up:active {
+    opacity: .8
+}
+#bbl-flashbacks .timepicker .time .arrow-up {
+    top: -10px
+}
+#bbl-flashbacks .timepicker .time .arrow-up span {
+    background-position: -21px -69px
+}
+#bbl-flashbacks .timepicker .time .arrow-down {
+    bottom: -10px
+}
+#bbl-flashbacks .timepicker .time .arrow-down span {
+    background-position: -21px -106px
+}
+#bbl-flashbacks #camera-selector {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    font-size: 13px
+}
+#bbl-flashbacks #camera-selector .camerapicker {
+    display: block
+}
+#bbl-flashbacks #camera-selector .camerapicker.is-visible-false {
+    height: 41px
+}
+#bbl-flashbacks #camera-selector .camerapicker.is-visible-true {
+    height: 195px
+}
+#bbl-flashbacks #camera-selector .camerapicker.is-visible-true .camera-selected {
+    border-radius: 7px 7px 0 0
+}
+#bbl-flashbacks #camera-selector .camerapicker.is-visible-true .camera-selected span {
+    opacity: .2
+}
+#bbl-flashbacks #camera-selector .camera-selected {
+    display: block;
+    width: 90px;
+    height: 36px;
+    line-height: 36px;
+    color: #0092f3;
+    cursor: pointer;
+    position: relative;
+    padding-left: 10px;
+    border: 1px solid #0092f3;
+    border-radius: 7px
+}
+#bbl-flashbacks #camera-selector .camera-selected span {
+    display: block;
+    position: absolute;
+    text-indent: -9999px;
+    overflow: hidden;
+    right: 5px;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    background-image: url(../graphics/bigbrother-16-icons.png);
+    background-position: -337px -31px
+}
+#bbl-flashbacks #camera-selector ul {
+    position: absolute;
+    width: 102px;
+    background: #fff;
+    top: 39px;
+    left: 0;
+    z-index: 1;
+    margin: 0;
+    padding: 0
+}
+#bbl-flashbacks #camera-selector ul li {
+    margin: 0;
+    padding: 0
+}
+#bbl-flashbacks #camera-selector ul li a {
+    display: block;
+    font-size: 11px;
+    height: 30px;
+    color: #404040;
+    line-height: 30px;
+    cursor: pointer;
+    margin-top: -1px;
+    text-align: center;
+    border-left: 1px solid #0092f3;
+    border-right: 1px solid #0092f3;
+    border-bottom: 1px solid #0092f3
+}
+#bbl-flashbacks #camera-selector ul li a:hover {
+    color: #fff;
+    background: #0092f3
+}
+#bbl-flashbacks #camera-selector ul li a:active {
+    background: #0073c0
+}
+#bbl-flashbacks #camera-selector ul li:last-child a {
+    border-radius: 0 0 7px 7px
+}
+#bbl-flashbacks #watch-button {
+    position: absolute;
+    right: 20px;
+    top: 90px;
+    width: 102px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 13px;
+    text-align: center;
+    background: #0092f3;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 7px
+}
+#bbl-flashbacks #watch-button:hover {
+    background: #27a9ff
+}
+#bbl-flashbacks #watch-button:active {
+    background: #0092f3
+}
+#bbl-flashbacks #watch-button.disabled {
+    cursor: default;
+    background: #ccc
+}
+#bbl #bbl-chrome-casting {
+    width: 576px;
+    height: 460px;
+    background: #404040;
+    padding: 10px;
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    display: none;
+    text-align: center;
+    z-index: 5
+}
+#bbl .bbl-chrome-casting-msg {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    width: 300px;
+    margin: 90px auto 0;
+    height: 80px;
+    line-height: 1.1em
+}
+#bbl #cancel-chrome-casting {
+    display: block;
+    position: relative;
+    color: #fff;
+    width: 120px;
+    margin: 0 auto;
+    font-size: 13px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 7px;
+    text-transform: uppercase;
+    background: #0092f3;
+    text-decoration: none
+}
+#bbl #cancel-chrome-casting:hover {
+    background: #27a9ff;
+    text-decoration: none
+}
+#bbl #cancel-chrome-casting:active {
+    background: #0092f3;
+    text-decoration: none
+}
+#bbl .bbl-chrome-casting-small {
+    position: absolute;
+    bottom: 190px;
+    text-align: center;
+    width: 400px;
+    left: 50%;
+    margin-left: -200px;
+    font-size: 13px
+}
+#bbl .bbl-chrome-casting-small,
+#bbl .bbl-chrome-casting-small a {
+    color: #fff;
+    color: hsla(0, 0%, 100%, .9)
+}
+#bbl .bbl-chrome-casting-small a:hover {
+    color: #eee;
+    color: hsla(0, 0%, 100%, .7)
+}
+body.bbl-casting #bbl #bbl-chrome-casting {
+    display: block
+}
+#bbl #bbl-still-watching {
+    width: 576px;
+    height: 456px;
+    background: #111;
+    background: hsla(0, 0%, 8%, .8);
+    padding: 10px;
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    display: none;
+    text-align: center;
+    z-index: 30000
+}
+body.show-no-activity #bbl #bbl-still-watching {
+    display: block
+}
+#bbl .bbl-still-watching-msg {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    width: 300px;
+    margin: 90px auto 0;
+    height: 80px;
+    line-height: 1.1em;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+    letter-spacing: -1px
+}
+#bbl #yes-still-watching {
+    display: block;
+    position: relative;
+    background: #e69416;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U2OTQxNiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkODZjMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #e69416), color-stop(100%, #d86c00));
+    background: -webkit-linear-gradient(top, #e69416, #d86c00);
+    background: linear-gradient(180deg, #e69416 0, #d86c00);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#e69416', endColorstr='#d86c00', GradientType=0);
+    color: #fff;
+    width: 120px;
+    margin: 0 auto;
+    font-weight: 700;
+    font-size: 15px;
+    height: 25px;
+    line-height: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .4);
+    border: 1px solid hsla(0, 0%, 78%, .2)
+}
+#bbl #yes-still-watching:hover {
+    top: 1px;
+    box-shadow: none
+}
+#bbl #yes-still-watching:active {
+    top: 2px;
+    opacity: .9;
+    box-shadow: none
+}
+#bbl .bbl-still-watching-small {
+    position: absolute;
+    bottom: 190px;
+    text-align: center;
+    width: 400px;
+    left: 50%;
+    margin-left: -200px;
+    font-size: 13px
+}
+#bbl .bbl-still-watching-small,
+#bbl .bbl-still-watching-small a {
+    color: #fff;
+    color: hsla(0, 0%, 100%, .9)
+}
+#bbl .bbl-still-watching-small a:hover {
+    color: #eee;
+    color: hsla(0, 0%, 100%, .7)
+}
+#bbl #bbl-tweet-button {
+    display: block;
+    height: 38px;
+    line-height: 40px;
+    font-size: 18px;
+    text-align: center;
+    background: #0092f3;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 7px;
+    width: 280px;
+    height: 40px;
+    padding: 0;
+    text-decoration: none;
+    margin: 0 auto
+}
+#bbl #bbl-tweet-button:hover {
+    background: #27a9ff
+}
+#bbl #bbl-tweet-button:active {
+    background: #0092f3
+}
+#bbl #bbl-tweets-window {
+    position: relative;
+    width: 300px;
+    height: 450px;
+    margin: 15px auto 0;
+    overflow: hidden;
+    z-index: 1;
+    background: url(../graphics/ajax-loader.gif) no-repeat center 50px
+}
+.video_info {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 30;
+    opacity: 50;
+    width: 100%;
+    height: 44px;
+    background: rgba(0, 0, 0, .5);
+    -webkit-transform: translateY(0);
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: .5s;
+    -moz-transform: translateY(0);
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: .5s;
+    -o-transform: translateY(0);
+    -o-transition-property: -o-transform;
+    -o-transition-duration: .5s
+}
+.preview-off.video_info {
+    -webkit-transform: translateY(-120%);
+    -moz-transform: translateY(-120%);
+    -o-transform: translateY(-120%)
+}
+#previewimagetag {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none
+}
+.bbl-floating-player #previewimagetag {
+    display: block
+}
+.video-previewimage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%
+}
+.previewimage-off.video-previewimage {
+    display: none
+}
+.title_text {
+    position: absolute;
+    left: 80px;
+    top: 14px;
+    background: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: #999;
+    overflow: hidden;
+    font-family: helvetica, sans-serif
+}
+.partner_logo_title {
+    position: absolute;
+    background: url(http://vidtech.cbsinteractive.com/skins/ui/imgs/cbs_logo.png) top no-repeat;
+    height: 16px;
+    width: 50px;
+    top: 15px;
+    left: 12px;
+    opacity: 1
+}
+.preview-controls {
+    position: absolute;
+    left: 10px;
+    bottom: 8px;
+    z-index: 30;
+    opacity: .85;
+    width: 180px;
+    height: 50px;
+    padding: 11px;
+    background: rgba(0, 0, 0, .85);
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -o-border-radius: 6px;
+    display: none
+}
+.bbl-floating-player .preview-controls {
+    display: block
+}
+.preview-off.preview-controls {
+    display: none
+}
+.play-button {
+    width: 14px;
+    height: 19px;
+    left: 25px;
+    top: 13px;
+    background: url(http://vidtech.cbsinteractive.com/skins/ui/imgs/cbs_player_sprite.png) -10px -7px no-repeat
+}
+.play-button,
+.play-text {
+    position: absolute;
+    display: block
+}
+.play-text {
+    left: 60px;
+    top: 17px;
+    background: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: #999;
+    text-transform: uppercase;
+    font-family: helvetica, sans-serif
+}
+.video-player {
+    position: relative;
+    margin: 0;
+    width: 640px;
+    height: 360px;
+    padding: 0;
+    border: 0 solid #fff;
+    font-family: Helvetica Neue;
+    font-weight: 700;
+    text-shadow: rgba(0, 0, 0, .8) 0 0 4px;
+    overflow: hidden
+}
+video {
+    width: 100%;
+    height: 100%;
+    background-color: #000
+}
+.controls {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    z-index: 0;
+    width: 620px;
+    height: 50px;
+    opacity: 85;
+    background-color: rgba(0, 0, 0, .5);
+    margin: 0 auto;
+    border: 1px solid hsla(0, 0%, 71%, .5);
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -webkit-transform: translateY(180%);
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: .5s;
+    -moz-border-radius: 6px;
+    -moz-transform: translateY(180%);
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: .5s;
+    -o-border-radius: 6px;
+    -o-transform: translateY(180%);
+    -o-transition-property: -o-transform;
+    -o-transition-duration: .5s
+}
+.show.controls {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -o-transform: translateY(0)
+}
+.hide.controls {
+    -moz-transform: translateY(180%)
+}
+.controls div {
+    position: absolute
+}
+.partner_logo {
+    height: 16px;
+    width: 50px;
+    top: 18px;
+    left: 14px;
+    opacity: 1;
+    display: none
+}
+#play_pause_hotspot {
+    position: absolute;
+    width: 55px;
+    height: 48px;
+    top: 1px;
+    left: 10px;
+    background-color: rgba(0, 100, 0, 0)
+}
+#play_pause {
+    background-image: url(http://vidtech.cbsinteractive.com/skins/ui/imgs/cbs_controls_sprite.png);
+    left: 20px;
+    width: 20px;
+    top: 17px;
+    height: 18px;
+    cursor: pointer
+}
+.playing {
+    background-position: 0 -39px
+}
+.paused {
+    background-position: 0 0
+}
+.progress-bar {
+    left: 60px;
+    border: 1px solid #0092f3!important;
+    width: 50%;
+    height: 8px;
+    top: 20px;
+    background: #000
+}
+body.bbl-hide-scrub #bbl .progress-bar {
+    display: none!important
+}
+.bar {
+    background: #0092f3;
+    width: 0;
+    height: 8px;
+    left: 0
+}
+.loaded {
+    opacity: .5;
+    pointer-events: auto
+}
+.played {
+    pointer-events: none
+}
+.scrubber-container {
+    left: 0;
+    right: 10px
+}
+.scrubber {
+    top: -4px;
+    pointer-events: none
+}
+.scrubber .thumb {
+    background: url(http://vidtech.cbsinteractive.com/skins/ui/imgs/cbs_controls_sprite.png) no-repeat;
+    background-position: -3px -76px;
+    height: 18px;
+    width: 20px;
+    pointer-events: auto
+}
+#scrubber_hotspot {
+    position: absolute;
+    width: 46px;
+    height: 48px;
+    top: -17px;
+    left: -15px;
+    background-color: rgba(0, 0, 100, 0);
+    pointer-events: auto
+}
+#timeCode {
+    position: absolute;
+    color: #fff;
+    font: 700 11px/10px Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px 2px #000;
+    height: 16px;
+    right: 55px;
+    top: 20px;
+    display: none
+}
+#fs_Button {
+    position: absolute;
+    background-image: url(http://vidtech.cbsinteractive.com/skins/ui/imgs/cbs_player_sprite.png);
+    background-position: 0 -122px;
+    height: 36px;
+    width: 32px;
+    top: 5px;
+    right: 14px;
+    top: 7px;
+    cursor: pointer;
+    opacity: 1
+}
+#fs_Button_hotspot {
+    position: absolute;
+    width: 30px;
+    height: 48px;
+    top: 1px;
+    right: 11px;
+    background-color: rgba(0, 100, 0, 0)
+}
+.watermark {
+    right: 10px
+}
+.watermark,
+.watermark4x3 {
+    position: absolute;
+    height: 16px;
+    width: 50px;
+    bottom: 10px;
+    opacity: .25;
+    display: none
+}
+.watermark4x3 {
+    right: 14%
+}
+.dimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s
+}
+.enhanced-playback-landscape .dimmer,
+.enhanced-playback-portrait .dimmer {
+    opacity: .9
+}
+#ad_markers_bar {
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0)
+}
+.adMarkersBarMarker {
+    position: relative;
+    width: 2px;
+    height: 6px;
+    background-color: #fff;
+    margin-top: 1px
+}
+.viewed.adMarkersBarMarker {
+    background-color: #787878
+}
+#dev_controls {
+    position: relative;
+    top: 140px
+}
+#loadAd,
+#loadByPID,
+#loadUrl {
+    float: left
+}
+body {
+    -webkit-user-select: none
+}
+.adVisitSite {
+    position: absolute;
+    top: 20px;
+    right: 150px;
+    z-index: 0;
+    width: 165px;
+    height: 50px;
+    opacity: 85;
+    background-color: rgba(0, 0, 0, .5);
+    margin: 0 auto;
+    border: 1px solid hsla(0, 0%, 71%, .5);
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -webkit-transform: translateY(-180%);
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: .5s;
+    -moz-border-radius: 6px;
+    -moz-transform: translateY(-180%);
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: .5s;
+    -o-border-radius: 6px;
+    -o-transform: translateY(-180%);
+    -o-transition-property: -o-transform;
+    -o-transition-duration: .5s;
+    display: none
+}
+.visitAdSite_text {
+    position: absolute;
+    left: 15px;
+    top: 14px;
+    background: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    overflow: hidden;
+    font-family: helvetica, sans-serif
+}
+.adVisitSiteShow.adVisitSite {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -o-transform: translateY(0)
+}
+.adVisitSiteHide.adVisitSite {
+    -webkit-transform: translateY(-180%);
+    -moz-transform: translateY(-180%);
+    -o-transform: translateY(-180%)
+}
+.visitAdSiteArrow {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 25px;
+    height: 15px;
+    opacity: 20
+}
+.adTimer {
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 20;
+    opacity: 85;
+    background-color: rgba(0, 0, 0, .5);
+    margin: 0 auto;
+    border: 1px solid hsla(0, 0%, 71%, .5)
+}
+.adTimer,
+.adTimer_text {
+    position: absolute;
+    display: none
+}
+.adTimer_text {
+    left: 15px;
+    top: 14px;
+    font-size: 16px
+}
+.adTimer_seconds,
+.adTimer_text {
+    background: none;
+    font-weight: 700;
+    color: #fff;
+    overflow: hidden;
+    font-family: helvetica, sans-serif
+}
+.adTimer_seconds {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    font-size: 11px
+}
+.adTimerShow.adTimer {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -o-transform: translateY(0)
+}
+.adTimerHide.adTimer {
+    -webkit-transform: translateY(-180%);
+    -moz-transform: translateY(-180%);
+    -o-transform: translateY(-180%)
+}
+.adControls {
+    position: absolute;
+    bottom: 20px;
+    left: 150px;
+    z-index: 0;
+    width: 125px;
+    height: 50px;
+    opacity: 85;
+    background-color: rgba(0, 0, 0, .5);
+    margin: 0 auto;
+    border: 1px solid hsla(0, 0%, 71%, .5);
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -webkit-transform: translateY(180%);
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: .5s;
+    -moz-border-radius: 6px;
+    -moz-transform: translateY(180%);
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: .5s;
+    -o-border-radius: 6px;
+    -o-transform: translateY(180%);
+    -o-transition-property: -moz-transform;
+    -o-transition-duration: .5s
+}
+.adShow.adControls {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -o-transform: translateY(0)
+}
+.adHide.adControls {
+    -webkit-transform: translateY(180%);
+    -moz-transform: translateY(180%);
+    -o-transform: translateY(180%)
+}
+.touched .adControls {
+    z-index: 40;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -o-transform: translateY(0);
+    opacity: 0
+}
+.adControls div {
+    position: absolute
+}
+.partner_logo_ad {
+    height: 16px;
+    width: 50px;
+    top: 18px;
+    left: 14px;
+    opacity: 1;
+    display: none
+}
+#adPlay_pause_hotspot {
+    position: absolute;
+    width: 55px;
+    height: 48px;
+    top: 1px;
+    left: 10px;
+    background-color: rgba(0, 100, 0, 0)
+}
+#adPlay_pause {
+    background-image: url(http://vidtech.cbsinteractive.com/skins/ui/imgs/cbs_controls_sprite.png);
+    left: 20px;
+    width: 20px;
+    top: 17px;
+    height: 18px;
+    cursor: pointer
+}
+.adPlaying {
+    background-position: 0 -39px
+}
+.adPaused {
+    background-position: 0 0
+}
+.adProgress-bar {
+    left: 60px;
+    border: 1px solid hsla(0, 0%, 100%, .2);
+    width: 50%;
+    height: 8px;
+    top: 20px;
+    background: #000
+}
+.adBar {
+    background: #0092f3;
+    width: 0;
+    height: 8px;
+    left: 0
+}
+.adLoaded {
+    opacity: .5;
+    pointer-events: auto
+}
+.adPlayed {
+    pointer-events: none
+}
+#adTimeCode {
+    color: #fff;
+    font: 700 11px/10px Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px 2px #000;
+    height: 16px;
+    right: 55px;
+    top: 20px
+}
+#adFs_Button,
+#adTimeCode {
+    position: absolute;
+    display: none
+}
+#adFs_Button {
+    background-image: url(http://vidtech.cbsinteractive.com/skins/ui/imgs/cbs_player_sprite.png);
+    background-position: 0 -122px;
+    height: 36px;
+    width: 32px;
+    top: 5px;
+    right: 14px;
+    top: 7px;
+    cursor: pointer;
+    opacity: 1
+}
+#adFs_Button_hotspot {
+    display: none;
+    position: absolute;
+    width: 30px;
+    height: 48px;
+    top: 1px;
+    right: 11px;
+    background-color: rgba(0, 100, 0, 0)
+}
+#uvpHi5FullScreen {
+    display: none;
+    background: rgba(0, 0, 0, .8);
+    width: 120%;
+    height: 120%;
+    top: -10px;
+    bottom: -10px;
+    left: -10px;
+    right: -10px;
+    position: fixed;
+    z-index: 9999998
+}
+.uvp-fullscreen {
+    background: #000!important;
+    width: auto!important;
+    height: auto!important;
+    margin: 0!important;
+    position: fixed!important;
+    width: 100%!important;
+    height: 100%!important;
+    top: 0!important;
+    bottom: 0!important;
+    left: 0!important;
+    right: 0!important;
+    z-index: 9999999!important;
+    max-height: 100%!important
+}
+#hi5ad-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    line-height: 20px;
+    height: 20px;
+    font-size: 10px;
+    color: #fff;
+    color: hsla(0, 0%, 100%, .6);
+    text-align: center;
+    background: rgba(0, 0, 0, .5);
+    font-family: arial, helvetica, sans-serif;
+    text-transform: uppercase
+}
+#bbl .uvp-fullscreen #video-holder {
+    height: 100%!important
+}
+#bbl .uvp-fullscreen #bbl-display-date {
+    display: none
+}

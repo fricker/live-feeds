@@ -1,0 +1,34 @@
+{
+    "manifest_version": 2,
+
+    "name": "Live Feeds",
+    "description": "Improves UX for watching Live Video Feeds (eg. http://www.cbs.com/shows/big_brother/live_feed/stream/)",
+    "version": "0.1",
+
+    "background": {
+        "scripts": ["background.js"]
+        //"page" : "background.html"
+    },
+
+    "page_action": {
+        "default_title": "Live Feeds UX",
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+
+    "content_scripts": [{
+        "run_at": "document_start",
+        "matches": ["http://www.cbs.com/shows/big_brother/live_feed/stream/*"],
+        "css": ["content.css"],
+        "js": ["jquery-2.1.4.js"/*, "cast_sender.js"*/, "content.js"]
+    },{
+        "run_at": "document_start",
+        "matches": ["http://www.cbs.com/shows/big_brother/live_feed/chat/*"],
+        "all_frames": true,
+        "css": ["chat.css"],
+        "js": ["chat.js"]
+    }],
+
+    "permissions": [
+    ]
+}

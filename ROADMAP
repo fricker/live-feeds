@@ -1,0 +1,68 @@
+add to github
+
+highlights
+	should fill tabbed pane content
+
+flashback
+	fix layout issues when stretched
+
+player should always be positioned directly below cameras
+
+tabbed panel resizing issues	
+
+chat room
+	replace existing js based inline css w/ css stylesheets
+	fix glitches w/ loading chat room tab's content
+	turn chat tabs into select
+	turn chat controls (temporarily removed) into icons
+
+popup
+	documentation
+	enable UX checkbox
+	enable extended features
+
+quad view stereo control
+	http://help.adobe.com/en_US/as3/dev/WS5b3ccc516d4fbf351e63e3d118a9b90204-7d1f.html
+	http://help.adobe.com/en_US/as3/dev/WS5b3ccc516d4fbf351e63e3d118a9b90204-7cb2.html
+	https://helpx.adobe.com/flash/kb/control-access-scripts-host-web.html
+	http://stackoverflow.com/questions/7458218/flash-player-control-from-javascript-outside
+	http://www.permadi.com/tutorial/flashjscommand/
+	https://arrixlive.wordpress.com/2005/03/25/javascript-in-love-with-flash-control-swf-from-javascript/
+
+chromecast
+
+LiveFeed icon
+	google video surveillance camera icon
+
+draggable handles for tabbed panel and cameras
+	jquery ui
+	transparent handles that replace margins in calculations
+
+logo w/ link to CBS big brother home page
+	above player left justified
+
+github
+	create README
+	create .io page
+
+flashback bookmarks
+	hashtag
+	url parameter
+
+------------------------------------
+
+issues
+
+prevent activation of body scroll bar when scrolling chat messages
+
+twitter feed
+	scroll panel extends beyound visible area
+
+------------------------------------
+
+beta testers
+
+* ColAngus
+* Kimmie
+* denise67
+* HopHey

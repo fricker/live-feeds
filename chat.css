@@ -1,0 +1,18 @@
+
+.message em {
+	font-size: 12px !important;
+	opacity: 0.7 !important;
+}
+
+.message-option-links {
+	opacity: 0.3 !important;
+}
+
+.message-option-links .icon:hover {
+	opacity: 1.0 !important;
+}
+
+.message-content {
+	font-size: 14px !important;
+	padding: 2px !important;
+}
