@@ -57,9 +57,6 @@ body {
 /* Player */
 
 #cbsi-player-embed {
-	top: auto !important; /* PADDING */
-	left: 18px !important; /* PADDING */
-	bottom: 18px !important; /* PADDING */
 	text-align: center !important;
 }
 

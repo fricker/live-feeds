@@ -28,7 +28,6 @@ function layoutScreen() {
 var playerWrapper;
 var player;
 var playerAspectRatio;
-var playerWidth;
 
 function initPlayer() {
 	playerWrapper = $("#cbsi-player-embed");
@@ -36,9 +35,9 @@ function initPlayer() {
 	player = playerWrapper.find("object");
 }
 
-function updatePlayer(height) {
-	player.attr("style", "visibility: visible; width: " + playerWidth + "px; height: " + height + "px;");
-	player.find("param[name=width]").attr('value', playerWidth);
+function updatePlayer(width, height) {
+	player.attr("style", "visibility: visible; width: " + width + "px; height: " + height + "px;");
+	player.find("param[name=width]").attr('value', width);
 	player.find("param[name=height]").attr('value', height);
 }
 
@@ -73,44 +72,61 @@ function initCameras() {
 	quadCameraImage = quadCamera.find(".liveimg");
 }
 
+function getCameraSizes(areaHeight, maxPlayerWidth) {
+	var initialPlayerHeight = Math.floor(maxPlayerWidth * playerAspectRatio);
+	var cameraHeight = areaHeight - initialPlayerHeight - PADDING;
+	if (cameraHeight < MIN_CAMERAS_HEIGHT) {
+		cameraHeight = MIN_CAMERAS_HEIGHT;
+	}
+	var camVideoHeight = cameraHeight - 30;
+	var camVideoWidth = Math.floor(camVideoHeight * 480 / 68);
+	var quadWidth = Math.floor(camVideoHeight * 116 / 68);
+	var camAnglesWidth = camVideoWidth + quadWidth;
+	if (camAnglesWidth > maxPlayerWidth) {
+		camVideoHeight = Math.floor(camVideoHeight * maxPlayerWidth / camAnglesWidth);
+		camVideoWidth = Math.floor(camVideoHeight * 480 / 68);
+		quadWidth = Math.floor(camVideoHeight * 116 / 68);
+		camAnglesWidth = maxPlayerWidth;
+	}
+	var cameraWidth = Math.floor(camVideoWidth / 4);
+	cameraHeight = camVideoHeight + 30;
+
+	return {
+		camVideoHeight: camVideoHeight,
+		camVideoWidth: camVideoWidth,
+		camAnglesWidth: camAnglesWidth,
+		cameraWidth: cameraWidth,
+		cameraHeight: cameraHeight,
+		quadWidth: quadWidth
+	};
+}
+
 function updateCamerasVideo(width, height) {
 	camerasVideo.attr("style", "visibility: visible; width: " + width + "px; height: " + height + "px;");
 	camerasVideo.find("param[name=width]").attr('value', width);
 	camerasVideo.find("param[name=height]").attr('value', height);
 }
 
-function updateCameraList(height) {
-	var camVideoHeight = height - 30;
-	var camVideoWidth = Math.floor(camVideoHeight * 480 / 68);
-	var quadWidth = Math.floor(camVideoHeight * 116 / 68);
-	var camAnglesWidth = camVideoWidth + quadWidth;
-	if (camAnglesWidth > playerWidth) {
-		camVideoHeight = Math.floor(camVideoHeight * playerWidth / camAnglesWidth);
-		camVideoWidth = Math.floor(camVideoHeight * 480 / 68);
-		quadWidth = Math.floor(camVideoHeight * 116 / 68);
-		camAnglesWidth = playerWidth;
-	}
-	var cameraWidth = Math.floor(camVideoWidth / 4);
-	var camHeight = camVideoHeight + 30;
-	
-	cameraList.attr("style", "width: " + playerWidth + "px; height: " + height + "px;");
-	cameraAngles.attr("style", "display: block; width: " + camAnglesWidth + "px; height: " + height + "px;");
-	cameras.attr("style", "width: " + cameraWidth + "px; height: " + camHeight + "px;");
-	cameraImages.attr("style", "height: " + camVideoHeight + "px;");
-	quadCamera.attr("style", "width: " + quadWidth + "px; height: " + camHeight + "px;");
-	quadCameraImage.attr("style", "width: " + quadWidth + "px; height: " + camVideoHeight + "px;");
-	allCameraLinks.attr("style", "height: " + camHeight + "px;");
-	camerasBackground.attr("style", "width: " + camVideoWidth + "px; height: " + camVideoHeight + "px;");
+function updateCameraList(cameraSizes) {
+	cameraList.attr("style", "width: " + cameraSizes.cameraListWidth + "px; height: " + cameraSizes.cameraHeight + "px;");
+	cameraAngles.attr("style", "display: block; width: " + cameraSizes.camAnglesWidth + "px; " +
+		                       "height: " +cameraSizes.cameraHeight + "px;");
+	cameras.attr("style", "width: " + cameraSizes.cameraWidth + "px; height: " + cameraSizes.cameraHeight + "px;");
+	cameraImages.attr("style", "height: " + cameraSizes.camVideoHeight + "px;");
+	quadCamera.attr("style", "width: " + cameraSizes.quadWidth + "px; height: " + cameraSizes.cameraHeight + "px;");
+	quadCameraImage.attr("style", "width: " + cameraSizes.quadWidth + "px; height: " + cameraSizes.camVideoHeight + "px;");
+	allCameraLinks.attr("style", "height: " + cameraSizes.cameraHeight + "px;");
+	camerasBackground.attr("style", "width: " + cameraSizes.camVideoWidth + "px; height: " + cameraSizes.camVideoHeight + "px;");
 
 	if (camerasVideo.length) {
-		updateCamerasVideo(camVideoWidth, camVideoHeight);
+		updateCamerasVideo(cameraSizes.camVideoWidth, cameraSizes.camVideoHeight);
 	}
 	else {
 		firstCamera.bind("DOMNodeInserted", function() {
 			if (!camerasVideo.length) {
 				camerasVideo = firstCamera.children("object");
 				if (camerasVideo.length) {
-					updateCamerasVideo(camVideoWidth, camVideoHeight);
+					updateCamerasVideo(cameraSizes.camVideoWidth, cameraSizes.camVideoHeight);
 				}
 			}
 		});
@@ -121,29 +137,35 @@ function updateCameraList(height) {
 
 function updatePlayArea() {
 	var areaHeight = screenHeight - (PADDING * 2);
-	playerWidth = screenWidth - MIN_TABBED_PANEL_WIDTH - (PADDING * 3);
-	var playerHeight = Math.floor(playerWidth * playerAspectRatio);
-	var cameraListHeight = areaHeight - playerHeight - PADDING;
-	if (cameraListHeight < MIN_CAMERAS_HEIGHT) {
-		cameraListHeight = MIN_CAMERAS_HEIGHT;
-		playerHeight = areaHeight - cameraListHeight - PADDING;
-		playerWidth = Math.floor(playerHeight / playerAspectRatio);
+	var maxPlayerWidth = screenWidth - MIN_TABBED_PANEL_WIDTH - (PADDING * 3);
+	var cameraSizes = getCameraSizes(areaHeight, maxPlayerWidth);
+	var playerHeight = areaHeight - cameraSizes.cameraHeight - PADDING;
+	var playerWidth = Math.floor(playerHeight / playerAspectRatio);
+	if (playerWidth > maxPlayerWidth) {
+		playerWidth = maxPlayerWidth;
+		playerHeight = Math.floor(playerWidth * playerAspectRatio);
 	}
-	playerWrapper.attr("style", "width: " + playerWidth + "px; height: " + playerHeight + "px; ");
-	updateCameraList(cameraListHeight);
+	cameraSizes.cameraListWidth = playerWidth;
+	updateCameraList(cameraSizes);
+	var playerTop = cameraSizes.cameraHeight + (PADDING * 2);
+	playerWrapper.attr("style", "top: " + playerTop + "px; width: " + playerWidth + "px; height: " + playerHeight + "px; ");
 	if (player.length) {
-		updatePlayer(playerHeight);
+		updatePlayer(playerWidth, playerHeight);
 	}
 	else {
 		playerWrapper.bind("DOMNodeInserted", function() {
 			if (!player.length) {
 				player = playerWrapper.find("object");
 				if (player.length) {
-					updatePlayer(playerHeight);
+					updatePlayer(playerWidth, playerHeight);
 				}
 			}
 		});
 	}
+	return {
+		width: playerWidth,
+		height: playerHeight
+	};
 }
 
 // Chat Room
@@ -266,8 +288,8 @@ function initTabbedPanel() {
 	initializeTweets();
 }
 
-function updateTabbedPanel() {
-	tabbedPanel.width(screenWidth - playerWidth - (3 * PADDING));
+function updateTabbedPanel(playerSize) {
+	tabbedPanel.width(screenWidth - playerSize.width - (3 * PADDING));
 }
 
 // Document
@@ -276,8 +298,8 @@ $(document).ready(function() {
     console.log("## content: document ready");
 	initScreen();
 	layoutScreen();
-	updatePlayArea();
-	updateTabbedPanel();
+	var playerSize = updatePlayArea();
+	updateTabbedPanel(playerSize);
 	$("#cbs-page").addClass("content-ready");
 });
 
@@ -291,6 +313,6 @@ window.onload = function() {
 
 $(window).resize(function() {
 	layoutScreen();
-	updatePlayArea();
-	updateTabbedPanel();
+	var playerSize = updatePlayArea();
+	updateTabbedPanel(playerSize);
 });

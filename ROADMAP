@@ -1,12 +1,13 @@
-add to github
+
+camera list issues
+	cameras do not fill camera angles div when camera angeles div is width of player
+	camera video segment should align with tab label div
 
 highlights
 	should fill tabbed pane content
 
 flashback
 	fix layout issues when stretched
-
-player should always be positioned directly below cameras
 
 tabbed panel resizing issues	
 
@@ -49,20 +50,20 @@ flashback bookmarks
 	hashtag
 	url parameter
 
-------------------------------------
 
 issues
+------------------------------------
 
 prevent activation of body scroll bar when scrolling chat messages
 
 twitter feed
 	scroll panel extends beyound visible area
 
-------------------------------------
 
 beta testers
+------------------------------------
 
-* ColAngus
-* Kimmie
-* denise67
-* HopHey
+ColAngus
+Kimmie
+denise67
+HopHey
