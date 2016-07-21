@@ -1,14 +1,4 @@
 
-banner ticker
-	when click on text remove alerts
-		adjust z-index?
-
-CBS header
-	fix new issues with positioning/sizing components when window resized
-	animate opening of new header when mouse over top of screen for 1 second
-	verify support for logging in
-	remove obsolete CSS
-
 camera list issues
 	cameras do not fill camera angles div when camera angeles div is width of player
 	camera video segment should align with tab label div
@@ -54,8 +44,9 @@ draggable handles for tabbed panel and cameras
 	jquery ui
 	transparent handles that replace margins in calculations
 
-logo w/ link to CBS big brother home page
-	above player left justified
+CBS header
+	animate opening of new header when mouse over top of screen for 1 second
+	verify support for logging in
 
 github
 	create README

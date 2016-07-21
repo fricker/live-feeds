@@ -18,6 +18,7 @@ body {
 
 #cbs-show-page {
 	margin: 0 auto !important;
+	min-width: 0 !important;
 }
 
 #bbl {
@@ -28,7 +29,6 @@ body {
 	margin: 0 !important;
 }
 
-#substickyheader,
 #bbl-promo,
 #cbs-footer {
 	display: none !important;

@@ -9,19 +9,22 @@ var MIN_TABBED_PANEL_WIDTH = 330;
 var screenWidth;
 var screenHeight;
 var container;
-var alerts;
+
+function initAlerts() {
+	var alertText = $("#bbl-alert-text");
+	alertText.bind("DOMNodeInserted", function() {
+		var tickerItems = alertText.find(".newsticker li");
+		tickerItems.attr("title", "Click To Remove");
+		tickerItems.click(function() {
+			console.log("## tickerItems.click"); // TESTING
+			$("#bbl-alerts").remove();
+		});
+	});
+}
 
 function initScreen() {
 	container = $("#bbl-container");
-	alerts = $("#bbl-alerts");
-	/*
-	$(".newsticker li").click(function() {
-		alerts.remove();
-	});
-	*/
-	alerts.click(function() {
-		alerts.remove();
-	});
+	initAlerts();
 	initTabbedPanel();
 	initCameras();
 	initPlayer();
@@ -154,6 +157,9 @@ function updatePlayArea() {
 	if (playerWidth > maxPlayerWidth) {
 		playerWidth = maxPlayerWidth;
 		playerHeight = Math.floor(playerWidth * playerAspectRatio);
+	}
+	if (cameraSizes.camAnglesWidth > playerWidth) {
+		cameraSizes = getCameraSizes(areaHeight, playerWidth);
 	}
 	cameraSizes.cameraListWidth = playerWidth;
 	updateCameraList(cameraSizes);
