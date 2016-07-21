@@ -9,9 +9,19 @@ var MIN_TABBED_PANEL_WIDTH = 330;
 var screenWidth;
 var screenHeight;
 var container;
+var alerts;
 
 function initScreen() {
 	container = $("#bbl-container");
+	alerts = $("#bbl-alerts");
+	/*
+	$(".newsticker li").click(function() {
+		alerts.remove();
+	});
+	*/
+	alerts.click(function() {
+		alerts.remove();
+	});
 	initTabbedPanel();
 	initCameras();
 	initPlayer();

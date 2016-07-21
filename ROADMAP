@@ -1,7 +1,22 @@
 
+banner ticker
+	when click on text remove alerts
+		adjust z-index?
+
+CBS header
+	fix new issues with positioning/sizing components when window resized
+	animate opening of new header when mouse over top of screen for 1 second
+	verify support for logging in
+	remove obsolete CSS
+
 camera list issues
 	cameras do not fill camera angles div when camera angeles div is width of player
 	camera video segment should align with tab label div
+
+tabbed pane
+	verify right padding required for scroll bars
+		chromebook
+		windows
 
 highlights
 	should fill tabbed pane content
@@ -58,12 +73,3 @@ prevent activation of body scroll bar when scrolling chat messages
 
 twitter feed
 	scroll panel extends beyound visible area
-
-
-beta testers
-------------------------------------
-
-ColAngus
-Kimmie
-denise67
-HopHey

@@ -11,8 +11,9 @@ body {
 }
 
 #masterPageWrapper {
-	background: none !important;
 	min-height: 0 !important;
+	top: 0 !important; /* New Header */
+	background: none !important;
 }
 
 #cbs-show-page {
@@ -31,6 +32,39 @@ body {
 #bbl-promo,
 #cbs-footer {
 	display: none !important;
+}
+
+/* New Header */
+
+#globalHeaderContainer,
+#globalShowHeader {
+	display: none !important;
+}
+
+#bbl-alerts {
+	position: absolute !important;
+	height: 18px !important;
+	line-height: 16px !important;
+	font-size: 10px !important;
+	z-index: 40 !important;
+}
+
+.alert-shadow-left,
+.alert-shadow-right {
+	display: none !important;
+}
+
+#bbl-alert-text {
+	height: 18px !important;
+	line-height: 16px !important;
+}
+
+.tickercontainer {
+	height: 18px !important;
+}
+
+.newsticker li:hover {
+	cursor: pointer !important;	
 }
 
 /* Cameras */
