@@ -1,20 +1,9 @@
 
-camera list issues
-	cameras do not fill camera angles div when camera angeles div is width of player
-	camera video segment should align with tab label div
-
-tabbed pane
-	verify right padding required for scroll bars
-		chromebook
-		windows
-
 highlights
 	should fill tabbed pane content
 
 flashback
 	fix layout issues when stretched
-
-tabbed panel resizing issues	
 
 chat room
 	replace existing js based inline css w/ css stylesheets
@@ -22,10 +11,20 @@ chat room
 	turn chat tabs into select
 	turn chat controls (temporarily removed) into icons
 
+twitter feed
+	scroll panel extends beyound visible area
+
 popup
 	documentation
 	enable UX checkbox
 	enable extended features
+
+--- BETA ---
+
+tabbed pane
+	verify right padding required for scroll bars
+		chromebook
+		windows
 
 quad view stereo control
 	http://help.adobe.com/en_US/as3/dev/WS5b3ccc516d4fbf351e63e3d118a9b90204-7d1f.html
@@ -55,12 +54,3 @@ github
 flashback bookmarks
 	hashtag
 	url parameter
-
-
-issues
-------------------------------------
-
-prevent activation of body scroll bar when scrolling chat messages
-
-twitter feed
-	scroll panel extends beyound visible area

@@ -16,7 +16,6 @@ function initAlerts() {
 		var tickerItems = alertText.find(".newsticker li");
 		tickerItems.attr("title", "Click To Remove");
 		tickerItems.click(function() {
-			console.log("## tickerItems.click"); // TESTING
 			$("#bbl-alerts").remove();
 		});
 	});
@@ -65,7 +64,8 @@ var firstCamera;
 var camerasBackground;
 var camerasVideo;
 var quadCamera;
-var quadCameraImage;
+var quadCamImageWrapper;
+var quadCamImage;
 
 function initCameras() {
 	cameraList = $("#bbl-camera-list");
@@ -82,7 +82,8 @@ function initCameras() {
 	camerasVideo = firstCamera.children("object");
 	
 	quadCamera = $(allCameras[4]);
-	quadCameraImage = quadCamera.find(".liveimg");
+	quadCamImageWrapper = quadCamera.find("#livecam5");
+	quadCamImage = quadCamImageWrapper.children();
 }
 
 function getCameraSizes(areaHeight, maxPlayerWidth) {
@@ -92,16 +93,20 @@ function getCameraSizes(areaHeight, maxPlayerWidth) {
 		cameraHeight = MIN_CAMERAS_HEIGHT;
 	}
 	var camVideoHeight = cameraHeight - 30;
-	var camVideoWidth = Math.floor(camVideoHeight * 480 / 68);
-	var quadWidth = Math.floor(camVideoHeight * 116 / 68);
-	var camAnglesWidth = camVideoWidth + quadWidth;
-	if (camAnglesWidth > maxPlayerWidth) {
-		camVideoHeight = Math.floor(camVideoHeight * maxPlayerWidth / camAnglesWidth);
-		camVideoWidth = Math.floor(camVideoHeight * 480 / 68);
-		quadWidth = Math.floor(camVideoHeight * 116 / 68);
-		camAnglesWidth = maxPlayerWidth;
+
+	var camVideoWidth, cameraWidth, quadWidth, camAnglesWidth;
+	function setCameraWidths() {
+		camVideoWidth = Math.round(camVideoHeight * 480 / 68);
+		cameraWidth = Math.round(camVideoWidth / 4);
+		quadWidth = Math.round(camVideoHeight * 116 / 68);
+		camAnglesWidth = (cameraWidth * 4) + quadWidth;
 	}
-	var cameraWidth = Math.floor(camVideoWidth / 4);
+
+	setCameraWidths();
+	if (camAnglesWidth > maxPlayerWidth) {
+		camVideoHeight = Math.round(camVideoHeight * maxPlayerWidth / camAnglesWidth);
+		setCameraWidths();
+	}
 	cameraHeight = camVideoHeight + 30;
 
 	return {
@@ -127,7 +132,9 @@ function updateCameraList(cameraSizes) {
 	cameras.attr("style", "width: " + cameraSizes.cameraWidth + "px; height: " + cameraSizes.cameraHeight + "px;");
 	cameraImages.attr("style", "height: " + cameraSizes.camVideoHeight + "px;");
 	quadCamera.attr("style", "width: " + cameraSizes.quadWidth + "px; height: " + cameraSizes.cameraHeight + "px;");
-	quadCameraImage.attr("style", "width: " + cameraSizes.quadWidth + "px; height: " + cameraSizes.camVideoHeight + "px;");
+	var quadCamOffset = quadCamImageWrapper.height() - cameraSizes.camVideoHeight;
+	quadCamImage.attr("style", "width: " + cameraSizes.quadWidth + "px; height: " + cameraSizes.camVideoHeight + "px; " +
+		                       "margin-bottom: -" + quadCamOffset + "px;");
 	allCameraLinks.attr("style", "height: " + cameraSizes.cameraHeight + "px;");
 	camerasBackground.attr("style", "width: " + cameraSizes.camVideoWidth + "px; height: " + cameraSizes.camVideoHeight + "px;");
 
@@ -184,72 +191,6 @@ function updatePlayArea() {
 	};
 }
 
-// Chat Room
-
-function initializeChatContent(chatContent) {
-    chatContent.attr("style", "flex-grow: 1; display: flex; flex-direction: column;");
-    var chatTabPane;
-    chatContent.bind("DOMNodeInserted", function() {
-    	if (chatTabPane && chatTabPane.length) {
-    		return;
-    	}
-		chatTabPane = chatContent.find(".tab-pane");
-		if (chatTabPane.length) {
-			chatTabPane.attr("style", "flex-grow: 1; display: flex; flex-direction: column;");
-			chatTabPane.find(".tab-pane-menu").remove(); // TODO: recreate as chat actions below message input
-			var chatMessagePanel = chatTabPane.find(".chat");
-			chatMessagePanel.parent().attr("style", "flex-grow: 1; display: flex; flex-direction: column;");
-    		chatMessagePanel.attr("style", "flex-grow: 1;");
-		}
-	});
-}
-
-function initializeChatFrame(chatFrame) {
-	chatFrame.attr("height", "100%");
-	var chatFrameHtml = chatFrame.contents().find("html");
-	chatFrameHtml.attr("style", "height: 100%");
-	var chatFrameBody = chatFrameHtml.find("body");
-	chatFrameBody.attr("style", "height: 100%");
-	var wrapper = chatFrameBody.find("#wrapper");
-    wrapper.attr("style", "display: flex; flex-direction: column; height: 100%;  width: 100%; PADDING: 0;");
-	var chat = wrapper.find("#bbchat");
-    chat.attr("style", "flex-grow: 1; display: flex; flex-direction: column;");
-    
-    var chatHeader = chat.find("#bbchat-header");
-    chatHeader.attr("style", "height: 20px;");
-    var dropdownWrapper = chatHeader.children("div");
-    dropdownWrapper.attr("style", "display: flex; flex-direction: row; justify-content: flex-end;");
-    var dropdowns = chatHeader.find(".dropdown");
-    dropdowns.attr("style", "width: 20px;");
-    var dropdownToggles = dropdowns.find(".dropdown-toggle");
-    dropdownToggles.removeClass("btn");
-    dropdownToggles.each(function(index, toggle) {
-    	var toggleElem = $(toggle);
-    	var title = toggleElem.text().trim();
-    	if (!title.length) {
-    		title = "You";
-    	}
-    	toggleElem.attr("title", title);
-    });
-    dropdownToggles.contents().filter(function() {
-		return (this.nodeType == 3 || (this.nodeType == 1 && !$(this).hasClass("icon")));
-	}).remove();
-    var toggleIcons = dropdownToggles.find(".icon");
-    toggleIcons.attr("style", "-webkit-filter: invert(1); filter: invert(1);");
-
-    var chatTabbedPanel = chat.find("#bbchat-tabs");
-    chatTabbedPanel.attr("style", "flex-grow: 1; display: flex; flex-direction: column; height: 100%; margin-top: 0;");
-    var chatContent = chatTabbedPanel.find("#bbchat-tab-content");
-    initializeChatContent(chatContent);
-}
-
-function initializeChat() {
-	var chatFrame = tabs.find("#bbl-chat-wrapper").children("iframe");
-    chatFrame.on('load', function() {
-    	initializeChatFrame(chatFrame);
-    });
-}
-
 // Twitter Feed
 
 function initializeTweetFrame(tweetFrame) {
@@ -300,12 +241,12 @@ var tabs;
 function initTabbedPanel() {
 	tabbedPanel = $("#bbl-tabs");
 	tabs = $("#bbl-tabs .bbl-tab");
-	initializeChat();
 	initializeTweets();
 }
 
 function updateTabbedPanel(playerSize) {
 	tabbedPanel.width(screenWidth - playerSize.width - (3 * PADDING));
+	tabs.height(tabbedPanel.height() - 30);
 }
 
 // Document

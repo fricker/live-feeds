@@ -1,4 +1,66 @@
 
+html,
+body {
+	height: 100% !important;
+}
+
+#wrapper {
+	height: 100% !important;
+	width: auto !important;
+	padding: 0 !important;
+}
+
+#bbchat {
+	height: 100% !important;
+	display: flex !important;
+	flex-direction: column !important;
+}
+
+/* Header */
+
+#bbchat-header {
+	height: 20px !important;
+}
+
+#bbchat-header > div {
+	display: flex !important;
+	flex-direction: row !important;
+	justify-content: flex-end !important;
+}
+
+#bbchat-header .dropdown {
+	width: 20px !important;
+}
+
+#bbchat-header .dropdown-toggle {
+	width: 20px !important;
+}
+
+#bbchat-header .dropdown-toggle .icon {
+	-webkit-filter: invert(1) !important;
+	filter: invert(1) !important;
+}
+
+/* Tab Content */
+
+#bbchat-tabs {
+	flex-grow: 1 !important;
+	margin-top: 0 !important;
+	display: flex !important;
+	flex-direction: column !important;
+}
+
+#bbchat-tab-content {
+	flex-grow: 1 !important;
+	overflow-y: hidden !important;
+}
+
+#bbchat-tab-content .tab-pane-menu {
+	display: none !important;
+}
+
+/* Messages */
+
 .message em {
 	font-size: 12px !important;
 	opacity: 0.7 !important;

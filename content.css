@@ -1,5 +1,6 @@
 body {
 	background-color: #666 !important;
+	overflow-y: hidden !important;
 }
 
 #cbs-page {
@@ -12,7 +13,7 @@ body {
 
 #masterPageWrapper {
 	min-height: 0 !important;
-	top: 0 !important; /* New Header */
+	top: 0 !important;
 	background: none !important;
 }
 
@@ -29,15 +30,10 @@ body {
 	margin: 0 !important;
 }
 
+#globalHeaderContainer,
+#globalShowHeader,
 #bbl-promo,
 #cbs-footer {
-	display: none !important;
-}
-
-/* New Header */
-
-#globalHeaderContainer,
-#globalShowHeader {
 	display: none !important;
 }
 
@@ -72,6 +68,7 @@ body {
 #bbl-camera-list {
 	top: 18px !important; /* PADDING */
 	left: 18px !important; /* PADDING */
+	overflow-x: hidden !important;
 }
 
 #bbl-camera-angles {
@@ -104,25 +101,22 @@ body {
 	top: 18px !important; /* PADDING */
 	bottom: 18px !important; /* PADDING */
 	right: 18px !important; /* PADDING */
-	display: flex  !important;
-	flex-direction: column  !important;
 }
 
 .bbl-tab {
 	width: auto !important;
-	flex-grow: 1 !important;
 	background-color: #404040 !important;
 }
 
 /* Chat Room */
 
 #bbl-chat-wrapper {
-	width: 100% !important;
+	width: auto !important;
 	height: 100% !important;
 	padding-top: 0 !important;
 }
 
-#bbl-chat-wrapper iframe {
+#bbl-chat-wrapper > iframe {
 	height: 100% !important;
 }
 

@@ -26,7 +26,7 @@
         "matches": ["http://www.cbs.com/shows/big_brother/live_feed/chat/*"],
         "all_frames": true,
         "css": ["chat.css"],
-        "js": ["chat.js"]
+        "js": ["jquery-2.1.4.js", "chat.js"]
     }],
 
     "permissions": [
