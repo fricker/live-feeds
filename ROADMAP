@@ -1,18 +1,13 @@
 
-highlights
-	should fill tabbed pane content
-
-flashback
-	fix layout issues when stretched
-
 chat room
-	replace existing js based inline css w/ css stylesheets
 	fix glitches w/ loading chat room tab's content
 	turn chat tabs into select
 	turn chat controls (temporarily removed) into icons
 
 twitter feed
 	scroll panel extends beyound visible area
+
+make each tabbed pane header the same height
 
 popup
 	documentation
@@ -25,6 +20,9 @@ tabbed pane
 	verify right padding required for scroll bars
 		chromebook
 		windows
+	scroll bar not being displayed in highlights
+	flashback
+		fix scrolling
 
 quad view stereo control
 	http://help.adobe.com/en_US/as3/dev/WS5b3ccc516d4fbf351e63e3d118a9b90204-7d1f.html
@@ -54,3 +52,7 @@ github
 flashback bookmarks
 	hashtag
 	url parameter
+
+hybrid apps
+	Android
+	iOS

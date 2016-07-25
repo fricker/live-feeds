@@ -59,6 +59,10 @@ body {
 	display: none !important;
 }
 
+#bbchat-tab-content .tab-pane div:last-child {
+	margin: 0 1px 1px;
+}
+
 /* Messages */
 
 .message em {

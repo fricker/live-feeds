@@ -95,19 +95,6 @@ body {
 	display: none !important;
 }
 
-/* Tabbed Panel */
-
-#bbl-tabs {
-	top: 18px !important; /* PADDING */
-	bottom: 18px !important; /* PADDING */
-	right: 18px !important; /* PADDING */
-}
-
-.bbl-tab {
-	width: auto !important;
-	background-color: #404040 !important;
-}
-
 /* Chat Room */
 
 #bbl-chat-wrapper {
@@ -118,6 +105,70 @@ body {
 
 #bbl-chat-wrapper > iframe {
 	height: 100% !important;
+}
+
+/* Highlights */
+
+#bbl-highlights .bbl-flashbacksContainer {
+	width: auto!important;
+}
+
+#bbl-highlights .sc-screen  {
+	width: auto !important;
+}
+
+#bbl-highlights .blShdoContainer {
+	display: none;
+}
+
+/* Flashback */
+
+#bbl-flashbacks {
+	background-color: white !important;
+}
+
+#bbl-flashbacks .calendar-view {
+	height: auto !important;
+}
+
+#bbl-flashbacks .calendar-view > div {
+	width: 300px !important;
+	margin: 0 auto !important;
+}
+
+#bbl-flashbacks .flashback-controller {
+	position: relative !important;
+	bottom: auto !important;
+	height: 100% !important;
+}
+
+#bbl-flashbacks .flashback-controller .timepicker {
+	width: 55% !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+#bbl-flashbacks .flashback-controller .timepicker .timepicker-note {
+	display: none;
+}
+
+#bbl-flashbacks .flashback-controller .time {
+	margin-top: 0 !important;
+	position: absolute !important;
+	right: 0 !important;
+}
+
+#bbl-flashbacks .flashback-controller #camera-selector {
+	top: 34px !important;
+	right: 0 !important;
+	width: 40% !important;
+}
+
+#bbl-flashbacks .flashback-controller #watch-button {
+	top: 120px !important;
+	width: auto !important;
+	left: 15% !important;
+	right: 15% !important;
 }
 
 /* Twitter Feed */
@@ -147,3 +198,17 @@ body {
 	width: 100% !important;
 	height: 100% !important;
 }
+
+/* Tabbed Panel */
+
+#bbl-tabs {
+	top: 18px !important; /* PADDING */
+	bottom: 18px !important; /* PADDING */
+	right: 18px !important; /* PADDING */
+}
+
+.bbl-tab {
+	width: auto !important;
+	background-color: #404040 !important;
+}
+

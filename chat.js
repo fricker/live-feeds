@@ -31,7 +31,7 @@ function initChatContent() {
 
 function layoutChatContent() {
 	if (chats && chats.length) {
-		chats.height(tabContent.height() - 42);
+		chats.height(tabContent.height() - 43);
 	}
 }
 

@@ -191,9 +191,35 @@ function updatePlayArea() {
 	};
 }
 
+// Highlights
+
+var highlights;
+var highlightsScreen;
+
+function initHighlights() {
+	highlights = $("#bbl-highlights");
+	var highlightsContainer = highlights.find(".bbl-flashbacksContainer");
+	highlightsScreen = highlightsContainer.find(".sc-screen");
+	if (highlightsScreen && highlightsScreen.length) {
+		updateHighlights();
+		return;
+	}
+	highlights.bind("DOMNodeInserted", function() {
+		highlightsContainer = highlights.find(".bbl-flashbacksContainer");
+		if (highlightsContainer && highlightsContainer.length) {
+			highlightsScreen = highlightsContainer.find(".sc-screen");
+			updateHighlights();
+		}
+	});
+}
+
+function updateHighlights() {
+	highlightsScreen.height(highlights.height() - 50);
+}
+
 // Twitter Feed
 
-function initializeTweetFrame(tweetFrame) {
+function initTweetFrame(tweetFrame) {
 	tweetFrame.attr("height", "100%");
 	var tweetFrameHtml = tweetFrame.contents().find("html");
 	tweetFrameHtml.attr("style", "height: 100%");
@@ -211,7 +237,7 @@ function initializeTweetFrame(tweetFrame) {
 	});
 }
 
-function initializeTweets() {
+function initTweets() {
 	var tweetFrame;
 	var frameWrapper = tabs.find("#twitter-widget-wrapper");
 	frameWrapper.bind("DOMNodeInserted", function() {
@@ -222,11 +248,11 @@ function initializeTweets() {
 		if (tweetFrame.length) {
 			if (tweetFrame[0].contentWindow && (tweetFrame[0].contentWindow.document.readyState &&
 				                                tweetFrame[0].contentWindow.document.readyState !== "loading")) {
-				initializeTweetFrame(tweetFrame);
+				initTweetFrame(tweetFrame);
 			}
 			else {
 			    tweetFrame.on('load', function() {
-					initializeTweetFrame(tweetFrame);
+					initTweetFrame(tweetFrame);
 			    });
 			}
 		}
@@ -241,12 +267,14 @@ var tabs;
 function initTabbedPanel() {
 	tabbedPanel = $("#bbl-tabs");
 	tabs = $("#bbl-tabs .bbl-tab");
-	initializeTweets();
+	initHighlights();
+	initTweets();
 }
 
 function updateTabbedPanel(playerSize) {
 	tabbedPanel.width(screenWidth - playerSize.width - (3 * PADDING));
 	tabs.height(tabbedPanel.height() - 30);
+	updateHighlights();
 }
 
 // Document
