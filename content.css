@@ -123,10 +123,6 @@ body {
 
 /* Flashback */
 
-#bbl-flashbacks {
-	background-color: white !important;
-}
-
 #bbl-flashbacks .calendar-view {
 	height: auto !important;
 }
@@ -138,12 +134,10 @@ body {
 
 #bbl-flashbacks .flashback-controller {
 	position: relative !important;
-	bottom: auto !important;
-	height: 100% !important;
 }
 
 #bbl-flashbacks .flashback-controller .timepicker {
-	width: 55% !important;
+	width: 58% !important;
 	margin: 0 !important;
 	padding: 0 !important;
 }

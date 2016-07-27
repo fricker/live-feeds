@@ -3,11 +3,10 @@
 
     "name": "Live Feeds",
     "description": "Improves UX for watching Live Video Feeds (eg. http://www.cbs.com/shows/big_brother/live_feed/stream/)",
-    "version": "0.1",
+    "version": "0.0.2",
 
     "background": {
         "scripts": ["background.js"]
-        //"page" : "background.html"
     },
 
     "page_action": {
@@ -20,7 +19,7 @@
         "run_at": "document_start",
         "matches": ["http://www.cbs.com/shows/big_brother/live_feed/stream/*"],
         "css": ["content.css"],
-        "js": ["jquery-2.1.4.js"/*, "cast_sender.js"*/, "content.js"]
+        "js": ["jquery-2.1.4.js", "content.js"]
     },{
         "run_at": "document_start",
         "matches": ["http://www.cbs.com/shows/big_brother/live_feed/chat/*"],

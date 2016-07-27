@@ -1,6 +1,6 @@
 
 chat room
-	fix glitches w/ loading chat room tab's content
+	disable image displayed when chat loaded
 	turn chat tabs into select
 	turn chat controls (temporarily removed) into icons
 
@@ -16,13 +16,13 @@ popup
 
 --- BETA ---
 
+unbind/off("DOMNodeInserted" ...)
+
 tabbed pane
 	verify right padding required for scroll bars
 		chromebook
 		windows
 	scroll bar not being displayed in highlights
-	flashback
-		fix scrolling
 
 quad view stereo control
 	http://help.adobe.com/en_US/as3/dev/WS5b3ccc516d4fbf351e63e3d118a9b90204-7d1f.html

@@ -217,6 +217,39 @@ function updateHighlights() {
 	highlightsScreen.height(highlights.height() - 50);
 }
 
+// Flashback
+
+var flashbacks;
+var fbCalendarWrapper;
+var fbController;
+var fbInitialized;
+
+function initFlashbackNodes() {
+	flashbacks = $("#bbl-flashbacks");
+	if (!fbCalendarWrapper || !fbCalendarWrapper.length) {
+		fbCalendarWrapper = flashbacks.children("div:first");
+	}
+	if (!fbController || !fbController.length) {
+		fbController = flashbacks.children(".flashback-controller");
+	}
+	return (fbCalendarWrapper.length && fbController.length);
+}
+
+function initFlashback() {
+	fbInitialized = initFlashbackNodes();
+	flashbacks.height(tabbedPanel.height() - 30);
+	updateFlashback();
+	tabs = $("#bbl-tabs .bbl-tab");
+}
+
+function updateFlashback() {
+	if (!fbInitialized) {
+		return;
+	}
+	var newHeight = flashbacks.height() - fbCalendarWrapper.height();
+	fbController.height(flashbacks.height() - fbCalendarWrapper.height());
+}
+
 // Twitter Feed
 
 function initTweetFrame(tweetFrame) {
@@ -275,6 +308,7 @@ function updateTabbedPanel(playerSize) {
 	tabbedPanel.width(screenWidth - playerSize.width - (3 * PADDING));
 	tabs.height(tabbedPanel.height() - 30);
 	updateHighlights();
+	updateFlashback();
 }
 
 // Document
@@ -294,6 +328,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 window.onload = function() {
 	console.log("## content: window loaded");
+	initFlashback();
 };
 
 $(window).resize(function() {
