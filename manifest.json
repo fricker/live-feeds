@@ -2,8 +2,8 @@
     "manifest_version": 2,
 
     "name": "Live Feeds",
-    "description": "Improves UX for watching Live Video Feeds (eg. http://www.cbs.com/shows/big_brother/live_feed/stream/)",
-    "version": "0.0.2",
+    "description": "Improves Live Video Feeds UX http://www.cbs.com/shows/big_brother/live_feed/stream/",
+    "version": "0.0.3",
 
     "background": {
         "scripts": ["background.js"]

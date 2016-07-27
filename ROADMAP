@@ -4,6 +4,8 @@ chat room
 	turn chat tabs into select
 	turn chat controls (temporarily removed) into icons
 
+tabs don't always scroll after switching between
+
 twitter feed
 	scroll panel extends beyound visible area
 
@@ -31,6 +33,8 @@ quad view stereo control
 	http://stackoverflow.com/questions/7458218/flash-player-control-from-javascript-outside
 	http://www.permadi.com/tutorial/flashjscommand/
 	https://arrixlive.wordpress.com/2005/03/25/javascript-in-love-with-flash-control-swf-from-javascript/
+
+deploy on firefox
 
 chromecast
 

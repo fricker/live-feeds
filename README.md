@@ -2,8 +2,13 @@ Chrome extension that re-writes CBS Big Brother live feeds page to be more usabl
 
 http://www.cbs.com/shows/big_brother/live_feed/stream/
 
-Installation
-------------
+Chrome Web Store
+----------------
+
+https://chrome.google.com/webstore/detail/live-feeds/opmejeekjjddfapfedeakeijaindnkaf
+
+Manual Installation
+-------------------
 
 1) Click on green "Clone or download" menu at https://github.com/fricker/live-feeds and select Download ZIP.
 
