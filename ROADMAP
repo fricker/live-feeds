@@ -1,24 +1,27 @@
 
-chat room
-	disable image displayed when chat loaded
-	turn chat tabs into select
-	turn chat controls (temporarily removed) into icons
+support for chat menus
+	Messages
+	People
+	confirm dialog for Leave Room?
 
-tabs don't always scroll after switching between
+make each tabbed pane header the same height
+
+tab content doesn't always scroll after switching between tabs
 
 twitter feed
 	scroll panel extends beyound visible area
 
-make each tabbed pane header the same height
+set size of timeout popover to cover all of play area
 
 popup
 	documentation
 	enable UX checkbox
-	enable extended features
 
 --- BETA ---
 
 unbind/off("DOMNodeInserted" ...)
+
+test with adblock software enabled
 
 tabbed pane
 	verify right padding required for scroll bars
@@ -50,7 +53,6 @@ CBS header
 	verify support for logging in
 
 github
-	create README
 	create .io page
 
 flashback bookmarks

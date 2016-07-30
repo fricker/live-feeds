@@ -41,13 +41,55 @@ body {
 	filter: invert(1) !important;
 }
 
+#bbchat .dropdown-menu {
+	left: auto !important;
+}
+
+#bbchat .dropdown-menu.rooms-list {
+	width: 200px !important;
+	right: -59px !important;
+}
+
+#bbchat .dropdown-menu.user-search {
+	width: 200px !important;
+	right: -30px !important;
+	margin-left: 0 !important;
+}
+
+#bbchat-change-name-dropdown {
+	margin-left: 0 !important;
+	right: 0 !important;
+}
+
+#bbchat-tab-list {
+	display: none !important;
+}
+
+#bbchat-menus {
+	display: flex;
+	flex-direction: row;
+}
+
+#bbchat-menus > div {
+	padding-left: 10px !important;
+	padding-bottom: 10px !important;
+}
+
+#bbchat-menus > div > label {
+}
+
+#bbchat-menus > div > label > select {
+}
+
 /* Tab Content */
 
 #bbchat-tabs {
+	height: auto !important;
 	flex-grow: 1 !important;
 	margin-top: 0 !important;
 	display: flex !important;
 	flex-direction: column !important;
+	background-image: none !important;
 }
 
 #bbchat-tab-content {
@@ -60,7 +102,7 @@ body {
 }
 
 #bbchat-tab-content .tab-pane div:last-child {
-	margin: 0 1px 1px;
+	margin: 0 1px 1px !important;
 }
 
 /* Messages */

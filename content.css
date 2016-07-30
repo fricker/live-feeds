@@ -97,6 +97,10 @@ body {
 
 /* Chat Room */
 
+#bbl-chat {
+	background: #404040 !important;
+}
+
 #bbl-chat-wrapper {
 	width: auto !important;
 	height: 100% !important;
@@ -205,4 +209,3 @@ body {
 	width: auto !important;
 	background-color: #404040 !important;
 }
-
