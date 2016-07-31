@@ -36,7 +36,7 @@ body {
 }
 
 #bbchat-menus > div {
-	padding-left: 10px;
+	padding-left: 10px !important;
 }
 
 #bbchat-menus .custom-select {

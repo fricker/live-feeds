@@ -113,8 +113,12 @@ body {
 
 /* Highlights */
 
+#bbl-highlights .bbHighlightsContainer {
+	height: 41px !important;
+}
+
 #bbl-highlights .bbl-flashbacksContainer {
-	width: auto!important;
+	width: auto !important;
 }
 
 #bbl-highlights .sc-screen  {
@@ -126,6 +130,19 @@ body {
 }
 
 /* Flashback */
+
+#bbl-flashbacks .month {
+	height: 38px !important;
+	line-height: 35px !important;
+}
+
+#bbl-flashbacks .month .month-drop {
+	top: 7px !important;
+}
+
+#bbl-flashbacks .month .calendar-month span {
+	top: 10px !important;
+}
 
 #bbl-flashbacks .calendar-view {
 	height: auto !important;
@@ -173,7 +190,19 @@ body {
 
 #bbl-tweets .tab-header {
 	width: auto !important;
+	height: 36px !important;
+	padding: 0 !important;
 	border-bottom: none !important;
+}
+
+#bbl-tweet-button {
+	position: absolute !important;
+	top: 8px;
+	left: 20%;
+	right: 20%;
+	line-height: 24px !important;
+	height: 24px !important;
+	font-size: 16px !important;
 }
 
 #bbl-tweets .bbl-tab-content {

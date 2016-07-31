@@ -1,11 +1,11 @@
 
-hide header content until viewable
-
 make each tabbed pane header the same height
 
 set size of timeout popover to cover all of play area
 
 --- ALPHA ---
+
+try calling initChat on $(document).ready instead of window.onload
 
 support for chat menus
 	Messages
