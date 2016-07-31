@@ -240,6 +240,13 @@ function initFlashback() {
 	flashbacks.height(tabbedPanel.height() - 30);
 	updateFlashback();
 	tabs = $("#bbl-tabs .bbl-tab");
+	var fbParam = getURLParameter("fb");
+	if (fbParam) {
+		flashbackHashtag(fbParam);
+	}
+	else {
+		defaultFlashback();
+	}
 }
 
 function updateFlashback() {
@@ -248,6 +255,166 @@ function updateFlashback() {
 	}
 	var newHeight = flashbacks.height() - fbCalendarWrapper.height();
 	fbController.height(flashbacks.height() - fbCalendarWrapper.height());
+}
+
+function flashbackHashtag(hashtag) {
+	var parts = hashtag.split("-");
+	if (parts.length === 0) {
+		defaultFlashback();
+		return;
+	}
+	var month = parseInt(parts[0]);
+	if (parts.length === 1) {
+		defaultFlashback(month);
+		return;
+	}
+	var day = parseInt(parts[1]);
+	if (parts.length === 2) {
+		defaultFlashback(month, day);
+		return;
+	}
+	var time = parts[2];
+	if (parts.length === 3) {
+		defaultFlashback(month, day, time, null, true);
+		return;
+	}
+	var camera = parseInt(parts[3]);
+	defaultFlashback(month, day, time, camera, true);
+}
+
+function getFlashbackHour(time) {
+	var parts = time.split(":");
+	var hour = parseInt(parts[0]);
+	if (parts[1].length === 3 && parts[1].slice(-1) === "P") {
+		hour += 12;
+	}
+	return hour;
+}
+
+function getFlashbackMinute(time) {
+	return parseInt(time.split(":")[1].substring(0, 2));
+}
+
+function defaultFlashback(month, day, time, camera, watchNow) {
+	console.log("## defaultFlashback", month, day, time, camera);
+	var hour, minute, now = new Date();
+	if (!month) {
+		month = now.getMonth() + 1;
+	}
+	if (!day) {
+		day = now.getDate();
+	}
+	if (time) {
+		hour = getFlashbackHour(time);
+		minute = getFlashbackMinute(time);
+	}
+	else {
+		hour = 0;
+		minute = 0;
+	}
+	if (!camera) {
+		camera = 1;
+	}
+	flashback(month, day, hour, minute, camera, watchNow);
+}
+
+function flashback(month, day, hour, minute, camera, watchNow) {
+	
+	function setDayOfMonth() {
+		if (day < 1) {
+			return;
+		}
+		var daysOfMonth = flashbacks.find(".dow:has(a)");
+		if (daysOfMonth.length >= day) {
+			$(daysOfMonth[day - 1]).children("a")[0].click();
+		}	
+	}
+
+	function setHour() {
+		var am = (flashbacks.find(".time-ampm > span").text() == "AM");
+		var currentHour = parseInt(flashbacks.find(".time-hour > span").text());
+		if (am) {
+			if (currentHour === 12) {
+				currentHour = 0;
+			}
+		}
+		else {
+			currentHour += 12;
+		}
+		var deltaHour = hour - currentHour;
+		if (deltaHour > 0) {
+			var upArrow = flashbacks.find(".time-hour > a.arrow-up")[0];
+			while (deltaHour > 0) {
+				upArrow.click();
+				deltaHour--;
+			}
+		}
+		else if (deltaHour < 0) {
+			var downArrow = flashbacks.find(".time-hour > a.arrow-down")[0];
+			while (deltaHour < 0) {
+				downArrow.click();
+				deltaHour++;
+			}
+		}
+	}
+
+	function setMinute() {
+		var currentMinute = parseInt(flashbacks.find(".time-min > span").text());
+		var deltaMinute = minute - currentMinute;
+		if (deltaMinute > 0) {
+			var upArrow = flashbacks.find(".time-min > a.arrow-up")[0];
+			while (deltaMinute > 0) {
+				upArrow.click();
+				deltaMinute--;
+			}
+		}
+		else if (deltaMinute < 0) {
+			var downArrow = flashbacks.find(".time-min > a.arrow-down")[0];
+			while (deltaMinute < 0) {
+				downArrow.click();
+				deltaMinute++;
+			}
+		}
+	}
+
+	function setCamera() {
+		var cameraOption = flashbacks.find("#camera-selector .camerapicker > ul > li:nth-child(" + camera + ") a");
+		if (cameraOption.length) {
+			cameraOption[0].click();
+		}
+	}
+
+	function completeFlashback() {
+		setDayOfMonth();
+		setHour();
+		setMinute();
+		setCamera();
+		if (watchNow) {
+			setTimeout(function() {
+				flashbacks.find("#watch-button")[0].click();
+			}, 0);
+		}
+	}
+
+	function watchDaysOfMonth() {
+		var activeDay = flashbacks.find(".dow > a > div.active");
+		activeDay.bind("DOMSubtreeModified", function(event) {
+			activeDay.off("DOMSubtreeModified");
+			setTimeout(completeFlashback, 0);
+		});
+	}
+
+	var selectedMonth = flashbacks.find(".month-drop > a").text().trim().split(" ")[0];
+	var monthOption = flashbacks.find(".month-dropdown li:nth-child(" + (month - 5) + ") a");
+	if (monthOption.length) {
+		if (selectedMonth !== monthOption.text()) {
+			watchDaysOfMonth();
+			monthOption[0].click();
+		}
+		else {
+			completeFlashback();
+		}
+	}
 }
 
 // Twitter Feed
@@ -312,6 +479,10 @@ function updateTabbedPanel(playerSize) {
 }
 
 // Document
+
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+}
 
 $(document).ready(function() {
     console.log("## content: document ready");

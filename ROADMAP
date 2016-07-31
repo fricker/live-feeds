@@ -1,5 +1,12 @@
 
-make each tabbed pane header the same height
+flashback
+	determine best way to get current player time
+	initialize to current time
+		moment.js?
+	when switch month re-select day of month (or closest too)
+
+highlights
+	content does not extend to bottom of tab
 
 set size of timeout popover to cover all of play area
 
@@ -18,11 +25,18 @@ support for chat menus
 
 tab content doesn't always scroll after switching between tabs
 
+flashback
+	watch button width should remain equal to width of calendar when panel is stretched
+
 twitter feed
 	scroll panel extends beyound visible area
 
 fullscreen issue
-	quad view camera image position is bad when return from player's fullscreen option
+	quad view camera image position is bad when
+		return from player's fullscreen option
+		return from maximizing window
+
+screen capture API
 
 test with adblock software enabled
 
@@ -36,7 +50,6 @@ LiveFeed icon
 --- BETA ---
 
 unbind/off("DOMNodeInserted" ...)
-
 
 tabbed pane
 	verify right padding required for scroll bars

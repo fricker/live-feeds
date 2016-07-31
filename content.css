@@ -197,12 +197,14 @@ body {
 
 #bbl-tweet-button {
 	position: absolute !important;
-	top: 8px;
-	left: 20%;
-	right: 20%;
-	line-height: 24px !important;
+	top: 8px !important;
+	left: 20% !important;
+	right: 20% !important;
+	width: auto !important;
+	line-height: 28px !important;
 	height: 24px !important;
 	font-size: 16px !important;
+	opacity: 0.8 !important;
 }
 
 #bbl-tweets .bbl-tab-content {
