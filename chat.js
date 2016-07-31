@@ -1,10 +1,8 @@
 console.log("## chat: entering");
 
-var roomList;
+var chatHeader;
 var roomSelect;
-var chatRoom;
 var chatContent;
-
 var watchedRooms = {};
 
 function initDropdownToggles() {
@@ -63,6 +61,7 @@ function activateRoom(room, active) {
 function watchRooms() {
 
 	function startWatching(roomEl) {
+		var activated = false;
 		var roomElem = $(roomEl);
 		var room = createRoom(roomElem);
 		var roomOption = createRoomOption(room);
@@ -70,10 +69,14 @@ function watchRooms() {
 		roomElem.bind("DOMSubtreeModified", function(event) {
 			if (room.active !== roomElem.hasClass("active")) {
 				activateRoom(room, !room.active);
+				if (!activated) {
+					chatHeader.addClass("activated");
+					activated = true;
+				}
 			}
 		});
 		var roomMessages = chatContent.find("div#" + room.id + " .chat");
-		roomMessages.height(chatContent.height() - 43);
+		roomMessages.height(chatContent.height() - 48);
 		watchedRooms[room.id] = {
 			room: room,
 			elem: roomElem,
@@ -88,6 +91,7 @@ function watchRooms() {
 		delete watchedRooms[roomEntry.room.id];
 	}
 
+	var roomList = $("#bbchat-tab-list");
 	roomList.children().each(function(index, roomEl) {
 		startWatching($(roomEl));
 	});
@@ -103,11 +107,13 @@ function displayMessages() {
 }
 
 function displayPeople() {
+	alert("Under Construction");
 }
 
 function sendInvite(select) {
 	select.find('option[value="invite"]').removeAttr("selected");
 	select.find('option[value="message"]').attr("selected", "selected");
+	alert("Under Construction");
 }
 
 function leaveRoom(select) {
@@ -156,13 +162,12 @@ function initMenus() {
 function layoutChatContent() {
 	var messages = chatContent.find(".chat");
 	if (messages && messages.length) {
-		messages.height(chatContent.height() - 43);
+		messages.height(chatContent.height() - 48);
 	}
 }
 
 function initChat() {
-	roomList = $("#bbchat-tab-list");
-	chatRoom = $("#bbchat-tabs");
+	chatHeader = $("#bbchat-header");
 	chatContent = $("#bbchat-tab-content");
 	initDropdownToggles();
 	initMenus();

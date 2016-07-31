@@ -1,4 +1,12 @@
 
+hide header content until viewable
+
+make each tabbed pane header the same height
+
+set size of timeout popover to cover all of play area
+
+--- ALPHA ---
+
 support for chat menus
 	Messages
 	People
@@ -8,24 +16,27 @@ support for chat menus
 			hide chat menus
 		confirm dialog for Leave Room?
 
-make each tabbed pane header the same height
-
 tab content doesn't always scroll after switching between tabs
 
 twitter feed
 	scroll panel extends beyound visible area
 
-set size of timeout popover to cover all of play area
+fullscreen issue
+	quad view camera image position is bad when return from player's fullscreen option
+
+test with adblock software enabled
 
 popup
 	documentation
 	enable UX checkbox
 
+LiveFeed icon
+	google video surveillance camera icon
+
 --- BETA ---
 
 unbind/off("DOMNodeInserted" ...)
 
-test with adblock software enabled
 
 tabbed pane
 	verify right padding required for scroll bars
@@ -44,9 +55,6 @@ quad view stereo control
 deploy on firefox
 
 chromecast
-
-LiveFeed icon
-	google video surveillance camera icon
 
 draggable handles for tabbed panel and cameras
 	jquery ui

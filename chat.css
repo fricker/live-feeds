@@ -24,15 +24,19 @@ body {
 	flex-direction: row !important;
 }
 
+#bbchat-header.activated #bbchat-menus {
+	display: flex;
+}
+
 #bbchat-menus {
-	flex-grow: 1 !important;
-	display: flex !important;
-	flex-direction: row !important;
+	flex-grow: 1;
+	display: none;
+	flex-direction: row;
 	align-items: center;
 }
 
 #bbchat-menus > div {
-	padding-left: 10px !important;
+	padding-left: 10px;
 }
 
 #bbchat-menus .custom-select {
@@ -85,6 +89,14 @@ body {
 
 #bbchat-menus div:first-child .custom-select select {
 	padding-right: 25px;
+}
+
+#bbchat-header > div:last-child {
+	display: none;
+}
+
+#bbchat-header.activated > div:last-child {
+	display: block;
 }
 
 #bbchat-header .dropdown {
@@ -167,4 +179,11 @@ body {
 .message-content {
 	font-size: 14px !important;
 	padding: 2px !important;
+}
+
+/* Input */
+
+#bbchat textarea {
+	height: 44px !important;
+	font-size: 13px !important;
 }
