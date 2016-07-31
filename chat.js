@@ -33,7 +33,7 @@ function createRoom(roomElem) {
 
 function createRoomsSelect() {
 	var wrapper = $('<div/>');
-	var container = $('<label/>');
+	var container = $('<label class="custom-select"/>');
 	roomSelect = $('<select/>');
 	roomSelect.change(function(ev) {
 		var roomEntry = watchedRooms[ev.target.value];
@@ -85,7 +85,7 @@ function watchRooms() {
 		var roomEntry = watchedRooms[roomElem.attr("data-room-id")];
 		roomEntry.elem.off("DOMSubtreeModified");
 		roomEntry.option.remove();
-		delete watchedRooms[room.id];
+		delete watchedRooms[roomEntry.room.id];
 	}
 
 	roomList.children().each(function(index, roomEl) {
@@ -99,6 +99,17 @@ function watchRooms() {
 	});
 }
 
+function displayMessages() {
+}
+
+function displayPeople() {
+}
+
+function sendInvite(select) {
+	select.find('option[value="invite"]').removeAttr("selected");
+	select.find('option[value="message"]').attr("selected", "selected");
+}
+
 function leaveRoom(select) {
 	var closeButton = chatContent.find("div.tab-pane.active > div.tab-pane-menu > a.close");
 	closeButton[0].click();
@@ -108,16 +119,22 @@ function leaveRoom(select) {
 
 function createActionsSelect() {
 	var wrapper = $('<div/>');
-	var container = $('<label/>');
+	var container = $('<label class="custom-select"/>');
 	var select = $('<select/>');
 	select.append('<option value="messages">Messages</option>');
 	select.append('<option value="people">People</option>');
-	select.append('<option value="leave">Leave Room</option>');
+	select.append('<option value="invite">Send Invite…</option>');
+	select.append('<option value="leave">Leave Room…</option>');
 	select.change(function(ev) {
 		switch(ev.target.value) {
 			case "messages":
+				displayMessages();
 				break;
 			case "people":
+				displayPeople();
+				break;
+			case "invite":
+				sendInvite(select);
 				break;
 			case "leave":
 				leaveRoom(select);
@@ -133,7 +150,7 @@ function initMenus() {
 	var menus = $('<div id="bbchat-menus"></div>');
 	menus.append(createRoomsSelect());
 	menus.append(createActionsSelect());
-	menus.insertBefore(chatContent);
+	$("#bbchat-header").prepend(menus);
 }
 
 function layoutChatContent() {
@@ -167,5 +184,7 @@ window.onload = function() {
 };
 
 $(window).resize(function() {
-	layoutChatContent();
+	if (chatContent) {
+		layoutChatContent();
+	}
 });

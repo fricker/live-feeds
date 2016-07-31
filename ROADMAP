@@ -2,7 +2,11 @@
 support for chat menus
 	Messages
 	People
-	confirm dialog for Leave Room?
+	Leave Room
+		leave last room
+			don't display User dropdown content
+			hide chat menus
+		confirm dialog for Leave Room?
 
 make each tabbed pane header the same height
 

@@ -19,17 +19,77 @@ body {
 /* Header */
 
 #bbchat-header {
-	height: 20px !important;
-}
-
-#bbchat-header > div {
+	height: 35px !important;
 	display: flex !important;
 	flex-direction: row !important;
-	justify-content: flex-end !important;
+}
+
+#bbchat-menus {
+	flex-grow: 1 !important;
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: center;
+}
+
+#bbchat-menus > div {
+	padding-left: 10px !important;
+}
+
+#bbchat-menus .custom-select {
+	position: relative;
+}
+
+#bbchat-menus .custom-select select {
+	color: #eee;
+	display: inline-block;
+	border: 1px solid #272727;
+	padding: 4px 3px 3px 5px;
+	margin: 0;
+	font: inherit;
+	outline: 0;
+	line-height: 1.2;
+	background: #393939;
+	-webkit-appearance: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 0;
+	width: 100%;
+	font-size: 12px;
+	height: 25px;
+}
+
+#bbchat-menus .custom-select select:focus {
+    -webkit-box-shadow: 0 0 3px 1px #387bbe;
+    -moz-box-shadow: 0 0 3px 1px #387bbe;
+    box-shadow: 0 0 3px 1px #387bbe
+}
+
+#bbchat-menus .custom-select:after {
+    content: "▼";
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 60%;
+    line-height: 30px;
+    padding: 0 7px;
+    color: white;
+    pointer-events: none;
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0
+}
+
+#bbchat-menus .no-pointer-events .custom-select:after {
+    content: none
+}
+
+#bbchat-menus div:first-child .custom-select select {
+	padding-right: 25px;
 }
 
 #bbchat-header .dropdown {
 	width: 20px !important;
+	margin-left: 3px !important;
 }
 
 #bbchat-header .dropdown-toggle {
@@ -47,12 +107,12 @@ body {
 
 #bbchat .dropdown-menu.rooms-list {
 	width: 200px !important;
-	right: -59px !important;
+	right: -48px !important;
 }
 
 #bbchat .dropdown-menu.user-search {
 	width: 200px !important;
-	right: -30px !important;
+	right: -24px !important;
 	margin-left: 0 !important;
 }
 
@@ -63,22 +123,6 @@ body {
 
 #bbchat-tab-list {
 	display: none !important;
-}
-
-#bbchat-menus {
-	display: flex;
-	flex-direction: row;
-}
-
-#bbchat-menus > div {
-	padding-left: 10px !important;
-	padding-bottom: 10px !important;
-}
-
-#bbchat-menus > div > label {
-}
-
-#bbchat-menus > div > label > select {
 }
 
 /* Tab Content */
