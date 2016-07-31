@@ -7,6 +7,17 @@ Chrome Web Store
 
 https://chrome.google.com/webstore/detail/live-feeds/opmejeekjjddfapfedeakeijaindnkaf
 
+Features (create github.io pages)
+--------
+
+Dynamic Layout
+
+	Todo: Logic behind positioing and sizing. How to zoom on Mac / Windows.
+
+Flashback Parameter
+
+	Todo: Instructions on how to construct parameter
+
 Manual Installation
 -------------------
 

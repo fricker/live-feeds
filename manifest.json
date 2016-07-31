@@ -2,8 +2,8 @@
     "manifest_version": 2,
 
     "name": "Live Feeds",
-    "description": "Improves Live Video Feeds UX http://www.cbs.com/shows/big_brother/live_feed/stream/",
-    "version": "0.0.8",
+    "description": "Improves UX of the Big Brother Live Feeds page at CBS.com",
+    "version": "0.0.9",
 
     "background": {
         "scripts": ["background.js"]

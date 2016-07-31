@@ -1,16 +1,16 @@
 
+highlights
+	content does not extend to bottom of tab
+
+twitter feed
+	scroll panel extends beyound visible area
+
 flashback
+	hashtag #BB18-7-30-10:22P-1
 	determine best way to get current player time
 	initialize to current time
 		moment.js?
 	when switch month re-select day of month (or closest too)
-
-highlights
-	content does not extend to bottom of tab
-
-set size of timeout popover to cover all of play area
-
---- ALPHA ---
 
 try calling initChat on $(document).ready instead of window.onload
 
@@ -24,12 +24,6 @@ support for chat menus
 		confirm dialog for Leave Room?
 
 tab content doesn't always scroll after switching between tabs
-
-flashback
-	watch button width should remain equal to width of calendar when panel is stretched
-
-twitter feed
-	scroll panel extends beyound visible area
 
 fullscreen issue
 	quad view camera image position is bad when

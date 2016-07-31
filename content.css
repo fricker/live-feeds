@@ -3,14 +3,6 @@ body {
 	overflow-y: hidden !important;
 }
 
-#cbs-page {
-	/*display: none;*/
-}
-
-#cbs-page.content-ready {
-	display: block;
-}
-
 #masterPageWrapper {
 	min-height: 0 !important;
 	top: 0 !important;
@@ -93,6 +85,10 @@ body {
 
 #bbl #bbl-calendar-button {
 	display: none !important;
+}
+
+#bbl-still-watching {
+	bottom: 18px !important; /* PADDING */
 }
 
 /* Chat Room */
@@ -181,9 +177,10 @@ body {
 
 #bbl-flashbacks .flashback-controller #watch-button {
 	top: 120px !important;
-	width: auto !important;
-	left: 15% !important;
-	right: 15% !important;
+	width: 286px !important;
+	left: 50% !important;
+	right: auto !important;
+	margin-left: -143px !important;
 }
 
 /* Twitter Feed */

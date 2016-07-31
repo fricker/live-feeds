@@ -40,11 +40,13 @@ function layoutScreen() {
 var playerWrapper;
 var player;
 var playerAspectRatio;
+var stillWatching;
 
 function initPlayer() {
 	playerWrapper = $("#cbsi-player-embed");
 	playerAspectRatio = playerWrapper.height() / playerWrapper.width();
 	player = playerWrapper.find("object");
+	stillWatching = $("#still-watching");
 }
 
 function updatePlayer(width, height) {
@@ -185,6 +187,7 @@ function updatePlayArea() {
 			}
 		});
 	}
+	stillWatching.width(playerWidth);
 	return {
 		width: playerWidth,
 		height: playerHeight
@@ -297,12 +300,20 @@ function getFlashbackMinute(time) {
 
 function defaultFlashback(month, day, time, camera, watchNow) {
 	console.log("## defaultFlashback", month, day, time, camera);
-	var hour, minute, now = new Date();
+	var hour, minute, now;
+	
+	function getNow() {
+		if (!now) {
+			now = new Date();
+		}
+		return now;
+	}
+
 	if (!month) {
-		month = now.getMonth() + 1;
+		month = getNow().getMonth() + 1;
 	}
 	if (!day) {
-		day = now.getDate();
+		day = getNow().getDate();
 	}
 	if (time) {
 		hour = getFlashbackHour(time);
@@ -490,7 +501,6 @@ $(document).ready(function() {
 	layoutScreen();
 	var playerSize = updatePlayArea();
 	updateTabbedPanel(playerSize);
-	$("#cbs-page").addClass("content-ready");
 });
 
 document.addEventListener("DOMContentLoaded", function(event) {
