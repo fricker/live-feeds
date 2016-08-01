@@ -16,6 +16,7 @@ function initAlerts() {
 		var tickerItems = alertText.find(".newsticker li");
 		tickerItems.attr("title", "Click To Remove");
 		tickerItems.click(function() {
+			alertText.off("DOMNodeInserted");
 			$("#bbl-alerts").remove();
 		});
 	});
@@ -25,6 +26,7 @@ function initScreen() {
 	container = $("#bbl-container");
 	initAlerts();
 	initTabbedPanel();
+	initTimeoutScreen();
 	initCameras();
 	initPlayer();
 }
@@ -40,13 +42,11 @@ function layoutScreen() {
 var playerWrapper;
 var player;
 var playerAspectRatio;
-var stillWatching;
 
 function initPlayer() {
 	playerWrapper = $("#cbsi-player-embed");
 	playerAspectRatio = playerWrapper.height() / playerWrapper.width();
 	player = playerWrapper.find("object");
-	stillWatching = $("#still-watching");
 }
 
 function updatePlayer(width, height) {
@@ -148,6 +148,7 @@ function updateCameraList(cameraSizes) {
 			if (!camerasVideo.length) {
 				camerasVideo = firstCamera.children("object");
 				if (camerasVideo.length) {
+					firstCamera.off("DOMNodeInserted");
 					updateCamerasVideo(cameraSizes.camVideoWidth, cameraSizes.camVideoHeight);
 				}
 			}
@@ -156,6 +157,22 @@ function updateCameraList(cameraSizes) {
 }
 
 // Play Area
+
+var stillWatching;
+
+function initTimeoutScreen() {
+	stillWatching = $("#bbl-still-watching");
+	if (!stillWatching.length) {
+		var parentElement = $("bbl"); // ???
+		parentElement.bind("DOMNodeInserted", function() {
+			stillWatching = $("#bbl-still-watching");
+			if (stillWatching.length) {
+				stillWatching.css("width", playerWrapper.width());
+				parentElement.off("DOMNodeInserted");
+			}
+		});
+	}
+}
 
 function updatePlayArea() {
 	var areaHeight = screenHeight - (PADDING * 2);
@@ -182,12 +199,13 @@ function updatePlayArea() {
 			if (!player.length) {
 				player = playerWrapper.find("object");
 				if (player.length) {
+					playerWrapper.off("DOMNodeInserted");
 					updatePlayer(playerWidth, playerHeight);
 				}
 			}
 		});
 	}
-	stillWatching.width(playerWidth);
+	stillWatching.css("width", playerWidth);
 	return {
 		width: playerWidth,
 		height: playerHeight
@@ -210,6 +228,7 @@ function initHighlights() {
 	highlights.bind("DOMNodeInserted", function() {
 		highlightsContainer = highlights.find(".bbl-flashbacksContainer");
 		if (highlightsContainer && highlightsContainer.length) {
+			highlights.off("DOMNodeInserted");
 			highlightsScreen = highlightsContainer.find(".sc-screen");
 			updateHighlights();
 		}
@@ -243,9 +262,9 @@ function initFlashback() {
 	flashbacks.height(tabbedPanel.height() - 30);
 	updateFlashback();
 	tabs = $("#bbl-tabs .bbl-tab");
-	var fbParam = getURLParameter("fb");
-	if (fbParam) {
-		flashbackHashtag(fbParam);
+	var fbCode = getURLParameter("fb");
+	if (fbCode) {
+		applyFlashbackCode(fbCode);
 	}
 	else {
 		defaultFlashback();
@@ -260,8 +279,39 @@ function updateFlashback() {
 	fbController.height(flashbacks.height() - fbCalendarWrapper.height());
 }
 
-function flashbackHashtag(hashtag) {
-	var parts = hashtag.split("-");
+var AVAILABLE_FB_MONTHS = ["June", "July", "August", "September"];
+
+function getFlashbackCode() {
+	var code = "";
+
+	// month
+	var selectedMonth = flashbacks.find(".month-drop > a").text().trim().split(" ")[0];
+	code += (AVAILABLE_FB_MONTHS.indexOf(selectedMonth) + 6);
+
+	// day of month
+	var daysOfMonth = flashbacks.find(".dow > a > div.active");
+	if (!daysOfMonth.length) {
+		return code;
+	}
+	code += "-";
+	code += daysOfMonth.text();
+
+	// time
+	code += "-";
+	code += flashbacks.find(".time-hour > span").text();
+	code += ":";
+	code += flashbacks.find(".time-min > span").text();
+	code += flashbacks.find(".time-ampm > span").text()[0];
+
+	// camera
+	code += "-";
+	code += (flashbacks.find("#camera-selector .camerapicker > ul > li.active ").index() + 1);
+
+	return code;
+}
+
+function applyFlashbackCode(code) {
+	var parts = code.split("-");
 	if (parts.length === 0) {
 		defaultFlashback();
 		return;
@@ -299,7 +349,6 @@ function getFlashbackMinute(time) {
 }
 
 function defaultFlashback(month, day, time, camera, watchNow) {
-	console.log("## defaultFlashback", month, day, time, camera);
 	var hour, minute, now;
 	
 	function getNow() {
@@ -443,6 +492,7 @@ function initTweetFrame(tweetFrame) {
 		}
 		timelineHeader = tweetFrameBody.find(".timeline-Header");
 		if (timelineHeader.length) {
+			tweetFrameBody.off("DOMNodeInserted");
 			timelineHeader.remove();
 		}
 	});
@@ -457,6 +507,7 @@ function initTweets() {
 		}
 		tweetFrame = frameWrapper.find("iframe");
 		if (tweetFrame.length) {
+			frameWrapper.off("DOMNodeInserted");
 			if (tweetFrame[0].contentWindow && (tweetFrame[0].contentWindow.document.readyState &&
 				                                tweetFrame[0].contentWindow.document.readyState !== "loading")) {
 				initTweetFrame(tweetFrame);
@@ -492,7 +543,8 @@ function updateTabbedPanel(playerSize) {
 // Document
 
 function getURLParameter(name) {
-  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').
+  		exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
 }
 
 $(document).ready(function() {
@@ -516,4 +568,33 @@ $(window).resize(function() {
 	layoutScreen();
 	var playerSize = updatePlayArea();
 	updateTabbedPanel(playerSize);
+});
+
+function sendChromeMessage(messageType, messageInfo, callback) {
+	var request = {type: messageType, info: messageInfo};
+  	chrome.runtime.sendMessage(request, function(response) {
+ 		if (chrome.runtime.lastError) {
+        	console.log("## content: message request failed", chrome.runtime.lastError);
+        	return;
+     	}
+     	if (callback) {
+     		callback(response);
+     	}
+	});
+}
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+	console.log("## content: chrome.runtime.onMessage", request, sender);
+	if (request.type === "getFlashbackCode") {
+		sendResponse({info: getFlashbackCode()});
+		return;
+	}
+	if (request.type === "flashbackCode") {
+		applyFlashbackCode(request.info);
+		return;
+	}
+});
+
+var extensionConnection = chrome.runtime.connect({name: "content-connection"});
+extensionConnection.onMessage.addListener(function(msg) {
+   console.log("content: extension.msg=" + msg);
 });

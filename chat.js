@@ -1,5 +1,34 @@
 console.log("## chat: entering");
 
+jQuery.fn.extend({
+	insertAtCaret: function(myValue) {
+	  return this.each(function(i) {
+	    if (document.selection) {
+	      //For browsers like Internet Explorer
+	      this.focus();
+	      var sel = document.selection.createRange();
+	      sel.text = myValue;
+	      this.focus();
+	    }
+	    else if (this.selectionStart || this.selectionStart == '0') {
+	      // For browsers like Firefox and Webkit based
+	      var startPos = this.selectionStart;
+	      var endPos = this.selectionEnd;
+	      var scrollTop = this.scrollTop;
+	      this.value = this.value.substring(0, startPos)+myValue+this.value.substring(endPos,this.value.length);
+	      this.focus();
+	      this.selectionStart = startPos + myValue.length;
+	      this.selectionEnd = startPos + myValue.length;
+	      this.scrollTop = scrollTop;
+	    }
+	    else {
+	      this.value += myValue;
+	      this.focus();
+	    }
+	  });
+	}
+});
+
 var chatHeader;
 var roomSelect;
 var chatContent;
@@ -60,6 +89,27 @@ function activateRoom(room, active) {
 
 function watchRooms() {
 
+	function watchMessages(room) {
+		var roomMessages = chatContent.find("div#" + room.id + " .chat");
+		roomMessages.height(chatContent.height() - 48);
+		roomMessages.bind("DOMNodeInserted", function(event) {
+			var messageContentElem = $(event.target).find(".message-content");
+			if (messageContentElem.hasClass("content-processed")) {
+				return;
+			}
+			var messageContent = messageContentElem.text();
+			var updatedContent = messageContent.replace(/#(\S+)/g, '<a class="message-tag" href="#">#$1</a>');
+			if (updatedContent !== messageContent) {
+				messageContentElem.html(updatedContent);
+				messageContentElem.find(".message-tag").click(function(event) {
+					extensionConnection.postMessage({type: "messageTagClicked", info: $(event.target).text()});
+				});
+			}
+			messageContentElem.addClass("content-processed");
+		});
+		return roomMessages;
+	}
+
 	function startWatching(roomEl) {
 		var activated = false;
 		var roomElem = $(roomEl);
@@ -75,17 +125,18 @@ function watchRooms() {
 				}
 			}
 		});
-		var roomMessages = chatContent.find("div#" + room.id + " .chat");
-		roomMessages.height(chatContent.height() - 48);
+		var watchedMessages = watchMessages(room);
 		watchedRooms[room.id] = {
 			room: room,
 			elem: roomElem,
-			option: roomOption
+			option: roomOption,
+			messages: watchedMessages
 		};
 	}
 
 	function stopWatching(roomElem) {
 		var roomEntry = watchedRooms[roomElem.attr("data-room-id")];
+		roomEntry.messages.off("DOMNodeInserted");
 		roomEntry.elem.off("DOMSubtreeModified");
 		roomEntry.option.remove();
 		delete watchedRooms[roomEntry.room.id];
@@ -192,4 +243,29 @@ $(window).resize(function() {
 	if (chatContent) {
 		layoutChatContent();
 	}
+});
+
+function sendChromeMessage(messageType, messageInfo, callback) {
+	var request = {type: messageType, info: messageInfo};
+  	chrome.runtime.sendMessage(request, function(response) {
+ 		if (chrome.runtime.lastError) {
+        	console.log("## chat: message request failed", chrome.runtime.lastError);
+        	return;
+     	}
+     	if (callback) {
+     		callback(response);
+     	}
+	});
+}
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+	console.log("## chat: chrome.runtime.onMessage", request, sender);
+	if (request.type === "pasteFlashback") {
+		$(document.activeElement).insertAtCaret("#FB-" + request.info);
+		sendResponse({message: "ok"});
+	}
+});
+
+var extensionConnection = chrome.runtime.connect({name: "chat-connection"});
+extensionConnection.onMessage.addListener(function(msg) {
+   console.log("chat: extension.msg=" + msg);
 });

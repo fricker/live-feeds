@@ -6,7 +6,7 @@ twitter feed
 	scroll panel extends beyound visible area
 
 flashback
-	hashtag #BB18-7-30-10:22P-1
+	better solution for determining when month update complete and day of month can be set
 	determine best way to get current player time
 	initialize to current time
 		moment.js?
@@ -42,8 +42,6 @@ LiveFeed icon
 	google video surveillance camera icon
 
 --- BETA ---
-
-unbind/off("DOMNodeInserted" ...)
 
 tabbed pane
 	verify right padding required for scroll bars

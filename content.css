@@ -88,6 +88,8 @@ body {
 }
 
 #bbl-still-watching {
+	height: auto !important; /* PADDING */
+	top: 18px !important; /* PADDING */
 	bottom: 18px !important; /* PADDING */
 }
 

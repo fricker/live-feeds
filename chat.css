@@ -181,6 +181,11 @@ body {
 	padding: 2px !important;
 }
 
+a.message-tag {
+	color: #0092f3 !important;
+	cursor: pointer !important;
+}
+
 /* Input */
 
 #bbchat textarea {
