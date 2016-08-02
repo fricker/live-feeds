@@ -161,14 +161,13 @@ function updateCameraList(cameraSizes) {
 var stillWatching;
 
 function initTimeoutScreen() {
-	stillWatching = $("#bbl-still-watching");
+	stillWatching = container.children("#bbl-still-watching");
 	if (!stillWatching.length) {
-		var parentElement = $("bbl"); // ???
-		parentElement.bind("DOMNodeInserted", function() {
-			stillWatching = $("#bbl-still-watching");
+		container.bind("DOMNodeInserted", function() {
+			stillWatching = container.children("#bbl-still-watching");
 			if (stillWatching.length) {
-				stillWatching.css("width", playerWrapper.width());
-				parentElement.off("DOMNodeInserted");
+				container.off("DOMNodeInserted");
+				stillWatching.css("width", playerWrapper.width() - PADDING);
 			}
 		});
 	}
@@ -205,7 +204,7 @@ function updatePlayArea() {
 			}
 		});
 	}
-	stillWatching.css("width", playerWidth);
+	stillWatching.css("width", playerWidth - PADDING);
 	return {
 		width: playerWidth,
 		height: playerHeight
@@ -289,68 +288,108 @@ function getFlashbackCode() {
 	code += (AVAILABLE_FB_MONTHS.indexOf(selectedMonth) + 6);
 
 	// day of month
-	var daysOfMonth = flashbacks.find(".dow > a > div.active");
-	if (!daysOfMonth.length) {
+	var selectedDay = flashbacks.find(".dow > a > div.active");
+	if (!selectedDay.length) {
 		return code;
 	}
-	code += "-";
-	code += daysOfMonth.text();
+	var day = selectedDay.text();
+	if (day.length < 2) {
+		code += '0';	
+	}
+	code += day;
 
 	// time
-	code += "-";
+	code += "_";
 	code += flashbacks.find(".time-hour > span").text();
-	code += ":";
-	code += flashbacks.find(".time-min > span").text();
+	var minutes = flashbacks.find(".time-min > span").text();
+	if (minutes !== "00") {
+		code += minutes;
+	}
 	code += flashbacks.find(".time-ampm > span").text()[0];
 
 	// camera
-	code += "-";
+	code += "_";
 	code += (flashbacks.find("#camera-selector .camerapicker > ul > li.active ").index() + 1);
 
 	return code;
 }
 
 function applyFlashbackCode(code) {
-	var parts = code.split("-");
+	var parts = code.split("_");
 	if (parts.length === 0) {
-		defaultFlashback();
+		console.log("WARN - flashback code not set");
 		return;
 	}
-	var month = parseInt(parts[0]);
+	
+	// date
+	var dateStr = parts[0];
+	var monthDigits = dateStr.length - 2; 
+	var month = parseInt(dateStr.substring(0, monthDigits));
+	if (isNaN(month)) {
+		console.log("WARN - could not identify flashback month", code);
+		return;
+	}
+	var day = parseInt(dateStr.substring(monthDigits));
+	if (isNaN(day)) {
+		console.log("WARN - could not identify flashback day", code);
+		return;
+	}
 	if (parts.length === 1) {
-		defaultFlashback(month);
-		return;
-	}
-	var day = parseInt(parts[1]);
-	if (parts.length === 2) {
 		defaultFlashback(month, day);
 		return;
 	}
-	var time = parts[2];
-	if (parts.length === 3) {
+
+	// time
+	var time = parts[1];
+	if (parts.length === 2) {
 		defaultFlashback(month, day, time, null, true);
 		return;
 	}
-	var camera = parseInt(parts[3]);
-	defaultFlashback(month, day, time, camera, true);
-}
 
-function getFlashbackHour(time) {
-	var parts = time.split(":");
-	var hour = parseInt(parts[0]);
-	if (parts[1].length === 3 && parts[1].slice(-1) === "P") {
-		hour += 12;
+	// camera
+	var camera = parseInt(parts[2]);
+	if (isNaN(camera)) {
+		console.log("WARN - could not identify flashback camera", code);
+		return;
 	}
-	return hour;
-}
-
-function getFlashbackMinute(time) {
-	return parseInt(time.split(":")[1].substring(0, 2));
+	defaultFlashback(month, day, time, camera, true);
 }
 
 function defaultFlashback(month, day, time, camera, watchNow) {
 	var hour, minute, now;
 	
+	function setHourMinute() {
+		var ap = time.slice(-1);
+		if (ap !== "A" && ap !== "P") {
+			ap = null;
+		}
+		var hasMinutes = (time.length > (ap ? 3 : 2));
+		var hoursDigits = time.length - (ap ? 1 : 0) - (hasMinutes ? 2 : 0);
+
+		// hour
+		hour = parseInt(time.substring(0, hoursDigits));
+		if (isNaN(hour)) {
+			console.log("WARN - could not identify flashback hour", time);
+			hour = 0;
+			return;
+		}
+		if (ap === "P") {
+			hour += 12;
+		}
+
+		// minute
+		if (hasMinutes) {
+			minute = parseInt(time.substring(hoursDigits, ap ? time.length - 1 : time.length));
+			if (isNaN(minute)) {
+				console.log("WARN - could not identify flashback minute", time);
+				minute = 0;
+			}
+		}
+		else {
+			minute = 0;
+		}
+	}
+
 	function getNow() {
 		if (!now) {
 			now = new Date();
@@ -365,8 +404,7 @@ function defaultFlashback(month, day, time, camera, watchNow) {
 		day = getNow().getDate();
 	}
 	if (time) {
-		hour = getFlashbackHour(time);
-		minute = getFlashbackMinute(time);
+		setHourMinute();
 	}
 	else {
 		hour = 0;
@@ -379,7 +417,7 @@ function defaultFlashback(month, day, time, camera, watchNow) {
 }
 
 function flashback(month, day, hour, minute, camera, watchNow) {
-	
+
 	function setDayOfMonth() {
 		if (day < 1) {
 			return;
@@ -452,7 +490,7 @@ function flashback(month, day, hour, minute, camera, watchNow) {
 		if (watchNow) {
 			setTimeout(function() {
 				flashbacks.find("#watch-button")[0].click();
-			}, 0);
+			}, 100);
 		}
 	}
 

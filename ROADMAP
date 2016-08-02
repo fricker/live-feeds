@@ -1,4 +1,14 @@
 
+issue removing rooms
+	already member of BB Strategic Talk & Live Feeds
+	switch to Live Feeds if necessary
+	add new room
+	remove new room
+		select shows BB Strategic Talk
+		content shows Live Feeds
+
+test behavior associated w/ removed flashback icon button
+
 highlights
 	content does not extend to bottom of tab
 

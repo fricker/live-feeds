@@ -3,7 +3,7 @@
 
     "name": "Live Feeds",
     "description": "Improves UX of the Big Brother Live Feeds page at CBS.com",
-    "version": "0.1.0",
+    "version": "0.1.1",
 
     "permissions": [
         "contextMenus"

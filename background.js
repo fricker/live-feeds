@@ -3,11 +3,10 @@ console.log("## background: entering");
 var contextMenuItem;
 
 function contextClicked(info, tab) {
-   console.log("## background: contextClicked", info, tab);
    sendChromeMessage("getFlashbackCode", info, function(codeResponse) {
       sendChromeMessage("pasteFlashback", codeResponse.info, function(pasteResponse) {
-         if (pasteResponse.message === "ok") {
-            console.log("## background: flashbackCode pasted", codeResponse.info);
+         if (pasteResponse.message !== "ok") {
+            console.log("## background: " + pasteResponse.message);
          }            
       });
    });
@@ -23,9 +22,6 @@ function prepareContext() {
    function() {
       if (chrome.runtime.lastError) {
          console.log("## background: Error creating context menu item", chrome.runtime.lastError);
-      }
-      else {
-         console.log("## background: Created context menu item");
       }
    });
 }
@@ -50,18 +46,20 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 });
 
 function onContentRequest(connection, request) {
-   console.log("background: onContentRequest", request); // TESTING
+   console.log("background: onContentRequest", request);
 }
 
 function onChatRequest(connection, request) {
-   console.log("background: onChatRequest", request); // TESTING
+   console.log("background: onChatRequest", request);
    if (request.type === "messageTagClicked") {
-      sendChromeMessage("flashbackCode", request.info.substring(4));
+      var prefix = request.info.substring(0, request.info.indexOf("_"));
+      if (prefix === "#FB" || prefix === "#BB18") {
+         sendChromeMessage("flashbackCode", request.info.substring(prefix.length + 1));
+      }
    }
 }
 
 chrome.runtime.onConnect.addListener(function(connection) {
-   console.log("background: connection established", connection); // TESTING
    if (connection.name == "content-connection") {
       connection.onMessage.addListener(function(msg) {
          onContentRequest(connection, msg);

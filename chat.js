@@ -260,7 +260,7 @@ function sendChromeMessage(messageType, messageInfo, callback) {
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	console.log("## chat: chrome.runtime.onMessage", request, sender);
 	if (request.type === "pasteFlashback") {
-		$(document.activeElement).insertAtCaret("#FB-" + request.info);
+		$(document.activeElement).insertAtCaret("#FB_" + request.info);
 		sendResponse({message: "ok"});
 	}
 });
