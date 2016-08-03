@@ -7,6 +7,9 @@ issue removing rooms
 		select shows BB Strategic Talk
 		content shows Live Feeds
 
+optimize box-shadow parameters
+	https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+
 test behavior associated w/ removed flashback icon button
 
 highlights
@@ -16,6 +19,8 @@ twitter feed
 	scroll panel extends beyound visible area
 
 flashback
+	code
+		support for Q for camera?
 	better solution for determining when month update complete and day of month can be set
 	determine best way to get current player time
 	initialize to current time
@@ -25,6 +30,7 @@ flashback
 try calling initChat on $(document).ready instead of window.onload
 
 support for chat menus
+	sometimes menus do not appear and need to reload page
 	Messages
 	People
 	Leave Room
@@ -34,11 +40,6 @@ support for chat menus
 		confirm dialog for Leave Room?
 
 tab content doesn't always scroll after switching between tabs
-
-fullscreen issue
-	quad view camera image position is bad when
-		return from player's fullscreen option
-		return from maximizing window
 
 screen capture API
 

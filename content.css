@@ -67,6 +67,10 @@ body {
 	margin: auto auto 0 !important;
 }
 
+#bbl-camera-angles > li {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
 #bbl #bbl-camera-angles li.selected .camera-border {
     width: 100% !important;
     height: 100% !important;
@@ -81,6 +85,7 @@ body {
 
 #cbsi-player-embed {
 	text-align: center !important;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
 }
 
 #bbl #bbl-calendar-button {
@@ -238,4 +243,5 @@ body {
 .bbl-tab {
 	width: auto !important;
 	background-color: #404040 !important;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
 }

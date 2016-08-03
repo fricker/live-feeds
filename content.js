@@ -134,9 +134,8 @@ function updateCameraList(cameraSizes) {
 	cameras.attr("style", "width: " + cameraSizes.cameraWidth + "px; height: " + cameraSizes.cameraHeight + "px;");
 	cameraImages.attr("style", "height: " + cameraSizes.camVideoHeight + "px;");
 	quadCamera.attr("style", "width: " + cameraSizes.quadWidth + "px; height: " + cameraSizes.cameraHeight + "px;");
-	var quadCamOffset = quadCamImageWrapper.height() - cameraSizes.camVideoHeight;
-	quadCamImage.attr("style", "width: " + cameraSizes.quadWidth + "px; height: " + cameraSizes.camVideoHeight + "px; " +
-		                       "margin-bottom: -" + quadCamOffset + "px;");
+	quadCamImageWrapper.attr("style", "width: " + cameraSizes.quadWidth + "px; height: " + cameraSizes.camVideoHeight + "px;");
+	quadCamImage.attr("style", "width: " + cameraSizes.quadWidth + "px; height: " + cameraSizes.camVideoHeight + "px;");
 	allCameraLinks.attr("style", "height: " + cameraSizes.cameraHeight + "px;");
 	camerasBackground.attr("style", "width: " + cameraSizes.camVideoWidth + "px; height: " + cameraSizes.camVideoHeight + "px;");
 
