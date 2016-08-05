@@ -1,22 +1,39 @@
 
-issue removing rooms
-	already member of BB Strategic Talk & Live Feeds
-	switch to Live Feeds if necessary
-	add new room
-	remove new room
-		select shows BB Strategic Talk
-		content shows Live Feeds
+update watchDaysOfMonth to be more predictable
+	use MutationObserver on month select text
 
-optimize box-shadow parameters
-	https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+update ActionsSelect to use select.value instead of option.selected
 
-test behavior associated w/ removed flashback icon button
+* publish new version *
+
+support for chat menus
+	sometimes menus do not appear and need to reload page
+		still an issue??
+	Messages
+	People
+	Leave Room
+		leave last room
+			don't display User dropdown content
+			hide chat menus
+		confirm dialog for Leave Room?
+
+popup
+	documentation
+	enable UX checkbox
 
 highlights
 	content does not extend to bottom of tab
 
 twitter feed
 	scroll panel extends beyound visible area
+
+optimize box-shadow parameters
+	https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+	set z-index of 3 components
+	verify tabbed panel's tabs are not being clipped
+
+set height and width of cameras' liveimg1-4
+	fix results in CBS placeholder images displayed everytime switch camera
 
 flashback
 	code
@@ -29,30 +46,14 @@ flashback
 
 try calling initChat on $(document).ready instead of window.onload
 
-support for chat menus
-	sometimes menus do not appear and need to reload page
-	Messages
-	People
-	Leave Room
-		leave last room
-			don't display User dropdown content
-			hide chat menus
-		confirm dialog for Leave Room?
-
 tab content doesn't always scroll after switching between tabs
 
 screen capture API
 
 test with adblock software enabled
 
-popup
-	documentation
-	enable UX checkbox
-
 LiveFeed icon
 	google video surveillance camera icon
-
---- BETA ---
 
 tabbed pane
 	verify right padding required for scroll bars

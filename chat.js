@@ -32,7 +32,7 @@ jQuery.fn.extend({
 var chatHeader;
 var roomSelect;
 var chatContent;
-var watchedRooms = {};
+var rooms = {};
 
 function initDropdownToggles() {
     var dropdownToggles = $("#bbchat-header .dropdown-toggle");
@@ -50,11 +50,37 @@ function initDropdownToggles() {
 	}).remove();	
 }
 
+function prepareMessages(roomId) {
+	var roomMessages = chatContent.find("div#" + roomId + " .chat");
+	roomMessages.height(chatContent.height() - 48);
+	roomMessages.bind("DOMNodeInserted", function(event) {
+		var messageContentElem = $(event.target).find(".message-content");
+		if (messageContentElem.hasClass("content-processed")) {
+			return;
+		}
+		var messageContent = messageContentElem.text();
+		var updatedContent = messageContent.replace(/#(\S+)/g, '<a class="message-tag" href="#">#$1</a>');
+		if (updatedContent !== messageContent) {
+			messageContentElem.html(updatedContent);
+			messageContentElem.find(".message-tag").click(function(event) {
+				extensionConnection.postMessage({type: "messageTagClicked", info: $(event.target).text()});
+			});
+		}
+		messageContentElem.addClass("content-processed");
+	});
+	return roomMessages;
+}
+
 function createRoom(roomElem) {
+	var roomId = roomElem.attr("data-room-id");
+	var roomTitle = roomElem.children()[0].title;
 	return {
-		id: roomElem.attr("data-room-id"),
-		title: roomElem.children()[0].title,
-		active: roomElem.hasClass("active")
+		id: roomId,
+		title: roomTitle,
+		elem: roomElem,
+		option: $('<option value="' + roomId + '">' + roomTitle + '</option>'),
+		messages: prepareMessages(roomId),
+		active: false
 	}
 }
 
@@ -63,94 +89,84 @@ function createRoomsSelect() {
 	var container = $('<label class="custom-select"/>');
 	roomSelect = $('<select/>');
 	roomSelect.change(function(ev) {
-		var roomEntry = watchedRooms[ev.target.value];
-		roomEntry.elem.children()[0].click();
+		rooms[ev.target.value].elem.children()[0].click();
 	});
 	container.append(roomSelect);
 	wrapper.append(container);
 	return wrapper;
 }
 
-function createRoomOption(room) {
-	var selected = room.selected ? ' selected="selected"' : '';
-	return $('<option value="' + room.id + '"' + selected + '>' + room.title + '</option>');
-}
-
 function activateRoom(room, active) {
 	room.active = active;
-	var roomEntry = watchedRooms[room.id];
 	if (active) {
-		roomEntry.option.attr("selected", "selected");
-	}
-	else {
-		roomEntry.option.removeAttr("selected");
+		roomSelect[0].value = rooms[room.id].option[0].value;
 	}
 }
 
-function watchRooms() {
+function prepareRooms() {
 
-	function watchMessages(room) {
-		var roomMessages = chatContent.find("div#" + room.id + " .chat");
-		roomMessages.height(chatContent.height() - 48);
-		roomMessages.bind("DOMNodeInserted", function(event) {
-			var messageContentElem = $(event.target).find(".message-content");
-			if (messageContentElem.hasClass("content-processed")) {
-				return;
-			}
-			var messageContent = messageContentElem.text();
-			var updatedContent = messageContent.replace(/#(\S+)/g, '<a class="message-tag" href="#">#$1</a>');
-			if (updatedContent !== messageContent) {
-				messageContentElem.html(updatedContent);
-				messageContentElem.find(".message-tag").click(function(event) {
-					extensionConnection.postMessage({type: "messageTagClicked", info: $(event.target).text()});
-				});
-			}
-			messageContentElem.addClass("content-processed");
-		});
-		return roomMessages;
-	}
+	var roomObserver;
 
-	function startWatching(roomEl) {
+	function roomAdded(roomElem) {
 		var activated = false;
-		var roomElem = $(roomEl);
 		var room = createRoom(roomElem);
-		var roomOption = createRoomOption(room);
-		roomSelect.append(roomOption);
-		roomElem.bind("DOMSubtreeModified", function(event) {
-			if (room.active !== roomElem.hasClass("active")) {
-				activateRoom(room, !room.active);
-				if (!activated) {
-					chatHeader.addClass("activated");
-					activated = true;
+		roomSelect.append(room.option);
+		roomObserver = new MutationObserver(function(mutations) {
+			mutations.forEach(function(mutation) {
+				if (mutation.attributeName === "class") {
+					var roomActive = roomElem.hasClass("active");
+					if (room.active != roomActive) {
+						activateRoom(room, roomActive);
+						if (!activated) {
+							chatHeader.addClass("activated");
+							activated = true;
+						}
+					}
 				}
-			}
+			});    
 		});
-		var watchedMessages = watchMessages(room);
-		watchedRooms[room.id] = {
-			room: room,
-			elem: roomElem,
-			option: roomOption,
-			messages: watchedMessages
-		};
+		roomObserver.observe(roomElem[0], {attributes: true});
+		rooms[room.id] = room;
 	}
 
-	function stopWatching(roomElem) {
-		var roomEntry = watchedRooms[roomElem.attr("data-room-id")];
-		roomEntry.messages.off("DOMNodeInserted");
-		roomEntry.elem.off("DOMSubtreeModified");
-		roomEntry.option.remove();
-		delete watchedRooms[roomEntry.room.id];
+	function roomRemoved(roomElem) {
+		var room = rooms[roomElem.attr("data-room-id")];
+		room.messages.off("DOMNodeInserted");
+		if (roomObserver) {
+			roomObserver.disconnect();
+			delete roomObserver;
+		}
+		
+		function updateRoomSelect(activeTabPane) {
+			var roomId = activeTabPane.attr("data-room-id");
+			roomSelect[0].value = roomId;
+			room.option.remove();
+		}
+
+		var activeTabPane = chatContent.find("div.tab-pane.active");
+		if (activeTabPane.length) {
+			updateRoomSelect(activeTabPane);
+		}
+		else {
+			function checkActiveTabPane(event) {
+				var activeTabPane = chatContent.find("div.tab-pane.active");
+				if (activeTabPane.length) {
+					chatContent.off("DOMSubtreeModified", checkActiveTabPane);
+					updateRoomSelect(activeTabPane);
+				}				
+			}
+			chatContent.bind("DOMSubtreeModified", checkActiveTabPane);
+		}
+
+		delete rooms[room.id];
 	}
 
 	var roomList = $("#bbchat-tab-list");
-	roomList.children().each(function(index, roomEl) {
-		startWatching($(roomEl));
-	});
 	roomList.bind("DOMNodeInserted", function(event) {
-		startWatching($(event.target));
+		roomAdded($(event.target));
 	});
 	roomList.bind("DOMNodeRemoved", function(event) {
-		stopWatching($(event.target));
+		roomRemoved($(event.target));
 	});
 }
 
@@ -223,7 +239,7 @@ function initChat() {
 	initDropdownToggles();
 	initMenus();
 	layoutChatContent();
-	watchRooms();
+	prepareRooms();
 }
 
 $(document).ready(function() {
