@@ -27,6 +27,7 @@ function initScreen() {
 	initAlerts();
 	initTabbedPanel();
 	initTimeoutScreen();
+	initChromeCasting();
 	initCameras();
 	initPlayer();
 }
@@ -158,17 +159,33 @@ function updateCameraList(cameraSizes) {
 // Play Area
 
 var stillWatching;
+var chromeCasting;
 
 function initTimeoutScreen() {
 	stillWatching = container.children("#bbl-still-watching");
 	if (!stillWatching.length) {
-		container.bind("DOMNodeInserted", function() {
+		function stillWatchingInserted() {
 			stillWatching = container.children("#bbl-still-watching");
 			if (stillWatching.length) {
-				container.off("DOMNodeInserted");
+				container.off("DOMNodeInserted", stillWatchingInserted);
 				stillWatching.css("width", playerWrapper.width() - PADDING);
 			}
-		});
+		}
+		container.bind("DOMNodeInserted", stillWatchingInserted);
+	}
+}
+
+function initChromeCasting() {
+	chromeCasting = container.children("#bbl-chrome-casting");
+	if (!chromeCasting.length) {
+		function chromeCastingInserted() {
+			chromeCasting = container.children("#bbl-chrome-casting");
+			if (chromeCasting.length) {
+				container.off("DOMNodeInserted", chromeCastingInserted);
+				chromeCasting.css("width", playerWrapper.width() - PADDING);
+			}
+		}
+		container.bind("DOMNodeInserted", chromeCastingInserted);
 	}
 }
 
@@ -204,6 +221,7 @@ function updatePlayArea() {
 		});
 	}
 	stillWatching.css("width", playerWidth - PADDING);
+	chromeCasting.css("width", playerWidth - PADDING);
 	return {
 		width: playerWidth,
 		height: playerHeight
@@ -493,24 +511,20 @@ function flashback(month, day, hour, minute, camera, watchNow) {
 		}
 	}
 
-	function watchDaysOfMonth() {
-		var activeDay = flashbacks.find(".dow > a > div.active");
-		activeDay.bind("DOMSubtreeModified", function(event) {
-			activeDay.off("DOMSubtreeModified");
-			setTimeout(completeFlashback, 0);
-		});
-	}
-
 	var selectedMonth = flashbacks.find(".month-drop > a").text().trim().split(" ")[0];
 	var monthOption = flashbacks.find(".month-dropdown li:nth-child(" + (month - 5) + ") a");
-	if (monthOption.length) {
-		if (selectedMonth !== monthOption.text()) {
-			watchDaysOfMonth();
-			monthOption[0].click();
-		}
-		else {
-			completeFlashback();
-		}
+	if (selectedMonth !== monthOption.text()) {
+		var calendarObserver = new MutationObserver(function(mutations) {
+			mutations.forEach(function(mutation) {
+				calendarObserver.disconnect();
+				setTimeout(completeFlashback, 0);
+			});
+		});
+		calendarObserver.observe(flashbacks.find(".calendar-view .calendar-row:nth-child(2)")[0], {childList: true});
+		monthOption[0].click();
+	}
+	else {
+		completeFlashback();
 	}
 }
 

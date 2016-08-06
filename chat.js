@@ -178,16 +178,14 @@ function displayPeople() {
 }
 
 function sendInvite(select) {
-	select.find('option[value="invite"]').removeAttr("selected");
-	select.find('option[value="message"]').attr("selected", "selected");
+	select[0].value = "messages";
 	alert("Under Construction");
 }
 
 function leaveRoom(select) {
 	var closeButton = chatContent.find("div.tab-pane.active > div.tab-pane-menu > a.close");
 	closeButton[0].click();
-	select.find('option[value="leave"]').removeAttr("selected");
-	select.find('option[value="message"]').attr("selected", "selected");
+	select[0].value = "messages";
 }
 
 function createActionsSelect() {
@@ -198,6 +196,7 @@ function createActionsSelect() {
 	select.append('<option value="people">People</option>');
 	select.append('<option value="invite">Send Invite…</option>');
 	select.append('<option value="leave">Leave Room…</option>');
+	select[0].value = "messages";
 	select.change(function(ev) {
 		switch(ev.target.value) {
 			case "messages":

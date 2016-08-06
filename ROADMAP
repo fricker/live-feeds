@@ -1,10 +1,13 @@
 
-update watchDaysOfMonth to be more predictable
-	use MutationObserver on month select text
+chat message limit
+	support for contenteditable div that submits content to original hidden textarea
+	characters beyond limit are wrapped with <em></em> (see twitter hoghlighting CSS)
+	send muliple chat messages if limit exceeded
 
-update ActionsSelect to use select.value instead of option.selected
-
-* publish new version *
+windows issues (see emails from colangus)
+	scroll position not maintained when switching tabs in tabbed panel
+	pinch to zoom issue where video overlaps tabbed panel
+	???
 
 support for chat menus
 	sometimes menus do not appear and need to reload page
@@ -83,10 +86,6 @@ CBS header
 
 github
 	create .io page
-
-flashback bookmarks
-	hashtag
-	url parameter
 
 hybrid apps
 	Android
