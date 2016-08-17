@@ -1,6 +1,9 @@
 
+keep player control bar same height
+
 chat message limit
 	support for contenteditable div that submits content to original hidden textarea
+		https://medium.engineering/why-contenteditable-is-terrible-122d8a40e480#.tkpwqra6s
 	characters beyond limit are wrapped with <em></em> (see twitter hoghlighting CSS)
 	send muliple chat messages if limit exceeded
 
@@ -8,6 +11,8 @@ windows issues (see emails from colangus)
 	scroll position not maintained when switching tabs in tabbed panel
 	pinch to zoom issue where video overlaps tabbed panel
 	???
+
+tab content doesn't always scroll after switching between tabs
 
 support for chat menus
 	sometimes menus do not appear and need to reload page
@@ -25,12 +30,16 @@ popup
 	enable UX checkbox
 
 highlights
+	refactor layout so description does not warp at fixed width
 	content does not extend to bottom of tab
+	rounded corners on watch buttons (see flashback)
 
 twitter feed
 	scroll panel extends beyound visible area
 
 optimize box-shadow parameters
+	two finger drag on cameras results in some scrolling
+		overflow: visible
 	https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
 	set z-index of 3 components
 	verify tabbed panel's tabs are not being clipped
@@ -38,18 +47,21 @@ optimize box-shadow parameters
 set height and width of cameras' liveimg1-4
 	fix results in CBS placeholder images displayed everytime switch camera
 
+still watching
+	Show Page link should be underlined
+
 flashback
+	Save action
+	drawer at bottom
+		archived flashbacks
+
 	code
 		support for Q for camera?
-	better solution for determining when month update complete and day of month can be set
 	determine best way to get current player time
 	initialize to current time
 		moment.js?
-	when switch month re-select day of month (or closest too)
-
-try calling initChat on $(document).ready instead of window.onload
-
-tab content doesn't always scroll after switching between tabs
+	when switch month re-select day of month (or closest too)?
+	disable future days and access to future months
 
 screen capture API
 

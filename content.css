@@ -138,6 +138,12 @@ body {
 	display: none;
 }
 
+/*
+#bbl-highlights .platform-nm .hg-btn-row-content-wrap {
+	width: auto !important;
+}
+*/
+
 /* Flashback */
 
 #bbl-flashbacks .month {

@@ -507,7 +507,7 @@ function flashback(month, day, hour, minute, camera, watchNow) {
 		if (watchNow) {
 			setTimeout(function() {
 				flashbacks.find("#watch-button")[0].click();
-			}, 100);
+			}, 0);
 		}
 	}
 
