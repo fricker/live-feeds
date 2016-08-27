@@ -1,6 +1,4 @@
 
-keep player control bar same height
-
 chat message limit
 	support for contenteditable div that submits content to original hidden textarea
 		https://medium.engineering/why-contenteditable-is-terrible-122d8a40e480#.tkpwqra6s
@@ -24,6 +22,8 @@ support for chat menus
 			don't display User dropdown content
 			hide chat menus
 		confirm dialog for Leave Room?
+
+keep player control bar same height
 
 popup
 	documentation
@@ -77,12 +77,6 @@ tabbed pane
 	scroll bar not being displayed in highlights
 
 quad view stereo control
-	http://help.adobe.com/en_US/as3/dev/WS5b3ccc516d4fbf351e63e3d118a9b90204-7d1f.html
-	http://help.adobe.com/en_US/as3/dev/WS5b3ccc516d4fbf351e63e3d118a9b90204-7cb2.html
-	https://helpx.adobe.com/flash/kb/control-access-scripts-host-web.html
-	http://stackoverflow.com/questions/7458218/flash-player-control-from-javascript-outside
-	http://www.permadi.com/tutorial/flashjscommand/
-	https://arrixlive.wordpress.com/2005/03/25/javascript-in-love-with-flash-control-swf-from-javascript/
 
 deploy on firefox
 

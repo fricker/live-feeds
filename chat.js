@@ -81,7 +81,7 @@ function createRoom(roomElem) {
 		option: $('<option value="' + roomId + '">' + roomTitle + '</option>'),
 		messages: prepareMessages(roomId),
 		active: false
-	}
+	};
 }
 
 function createRoomsSelect() {
@@ -134,7 +134,7 @@ function prepareRooms() {
 		room.messages.off("DOMNodeInserted");
 		if (roomObserver) {
 			roomObserver.disconnect();
-			delete roomObserver;
+			roomObserver =  null;
 		}
 		
 		function updateRoomSelect(activeTabPane) {
@@ -143,18 +143,19 @@ function prepareRooms() {
 			room.option.remove();
 		}
 
+		function checkActiveTabPane(event) {
+			var activeTabPane = chatContent.find("div.tab-pane.active");
+			if (activeTabPane.length) {
+				chatContent.off("DOMSubtreeModified", checkActiveTabPane);
+				updateRoomSelect(activeTabPane);
+			}				
+		}
+			
 		var activeTabPane = chatContent.find("div.tab-pane.active");
 		if (activeTabPane.length) {
 			updateRoomSelect(activeTabPane);
 		}
 		else {
-			function checkActiveTabPane(event) {
-				var activeTabPane = chatContent.find("div.tab-pane.active");
-				if (activeTabPane.length) {
-					chatContent.off("DOMSubtreeModified", checkActiveTabPane);
-					updateRoomSelect(activeTabPane);
-				}				
-			}
 			chatContent.bind("DOMSubtreeModified", checkActiveTabPane);
 		}
 
@@ -211,7 +212,7 @@ function createActionsSelect() {
 			case "leave":
 				leaveRoom(select);
 				break;
-		};
+		}
 	});
 	container.append(select);
 	wrapper.append(container);
