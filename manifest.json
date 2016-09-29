@@ -15,7 +15,8 @@
 
     "content_scripts": [{
         "run_at": "document_start",
-        "matches": ["http://www.cbs.com/shows/big_brother/live_feed/stream/*"],
+        "matches": ["http://www.cbs.com/shows/big_brother/live_feed/stream/*",
+                    "http://www.cbs.com/shows/big-brother-over-the-top/stream/*"],
         "css": ["content.css"],
         "js": ["jquery-2.1.4.js", "content.js"]
     },{
